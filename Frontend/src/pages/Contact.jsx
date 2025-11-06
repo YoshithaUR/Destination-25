@@ -27,7 +27,7 @@ const Contact = () => {
  
   return (
     <section
-      id="contac"
+      id="contact"
       className="relative min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white flex items-center justify-center px-6 py-20 overflow-hidden"
       data-aos="fade-in"
     >

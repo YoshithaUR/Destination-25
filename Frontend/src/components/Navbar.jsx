@@ -1,7 +1,12 @@
-import { Link } from "react-router-dom";
-import  { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Link as ScrollLink } from "react-scroll";
-import { Link as RouterLink, useLocation as useRouterLocation, useNavigate as useRouterNavigate } from "react-router-dom";
+import {
+  Link as RouterLink,
+  useLocation as useRouterLocation,
+  useNavigate as useRouterNavigate,
+} from "react-router-dom";
+import "./Navbar.css";
+
 
 const Navbar = () => {
   const [show, setShow] = useState(false);
@@ -11,6 +16,7 @@ const Navbar = () => {
   const navItems = ["home", "about", "destinations", "contact", "gallery"];
   const linkRefs = useRef([]);
 
+  // 🔹 Handle scroll effect for navbar
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 80) {
@@ -19,116 +25,157 @@ const Navbar = () => {
         setShow(false);
       }
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Handle keyboard navigation
+  // 🔹 Handle keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === "ArrowRight") {
         e.preventDefault();
-        setFocusedIndex(prev => (prev < navItems.length - 1 ? prev + 1 : 0));
+        setFocusedIndex((prev) =>
+          prev < navItems.length - 1 ? prev + 1 : 0
+        );
       } else if (e.key === "ArrowLeft") {
         e.preventDefault();
-        setFocusedIndex(prev => (prev > 0 ? prev - 1 : navItems.length - 1));
+        setFocusedIndex((prev) =>
+          prev > 0 ? prev - 1 : navItems.length - 1
+        );
       } else if (e.key === "Enter" && focusedIndex !== -1) {
-        // Trigger click on Enter key
         if (linkRefs.current[focusedIndex]) {
           linkRefs.current[focusedIndex].click();
         }
       }
     };
-
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [focusedIndex, navItems.length]);
 
-  // Set initial focus to first item when navbar becomes visible
   useEffect(() => {
     if (show && focusedIndex === -1) {
       setFocusedIndex(0);
     }
   }, [show, focusedIndex]);
 
-  // Check if we're on a destination page
-  const isDestinationPage = location.pathname.startsWith('/destinations');
-  const isPackagesPage = location.pathname === '/packages';
-  const isPackageDetailPage = location.pathname.startsWith('/packages/') && location.pathname !== '/packages';
+  // 🔹 Page detection
+  const isPackagesPage = location.pathname === "/packages";
+  const isPackageDetailPage =
+    location.pathname.startsWith("/packages/") &&
+    location.pathname !== "/packages";
 
   return (
-    <nav
-      className={`fixed top-0 left-0 w-full flex justify-between items-center px-10 py-6 z-50 transition-all duration-500 ${
-        show
-          ? "bg-black/70 backdrop-blur-md shadow-lg"
-          : "bg-transparent"
-      }`}
-    >
-      {/* Logo - Always show company name */}
-      <h1 className="text-white font-bold text-xl tracking-wider">
-        Smile Lanka
-      </h1>
+    <>
+      
+      {/* 🔹 Top Bar */}
+      <div className="top-bar">
+        {/* Left - Social Media Buttons */}
+        <div className="social-buttons">
+          <button
+            onClick={() => window.open("https://www.facebook.com", "_blank")}
+            className="social-button"
+          >
+            <img src="/undefined (7).jpg" alt="facebook" />
+          </button>
 
-      {/* Links - Updated to remove Images link */}
-      <ul className="flex space-x-10 text-sm text-white">
-        {isPackagesPage || isPackageDetailPage ? (
-          <>
-            <li className="hover:text-yellow-400 cursor-pointer">
-              <RouterLink to="/" className="block h-full w-full">
-                Home
-              </RouterLink>
-            </li>
-            <li className="hover:text-yellow-400 cursor-pointer">
-              <RouterLink to="/packages" className="block h-full w-full">
-                Packages
-              </RouterLink>
-            </li>
-            {/* Added Gallery link for package pages */}
-            <li className="hover:text-yellow-400 cursor-pointer">
-              <RouterLink to="/gallery" className="block h-full w-full">
-                Gallery
-              </RouterLink>
-            </li>
-          </>
-        ) : (
-          <>
-            <li className="hover:text-yellow-400 cursor-pointer">
-              {/* Changed from ScrollLink to RouterLink for consistent navigation */}
-              <RouterLink to="/" className="block h-full w-full">
-                Home
-              </RouterLink>
-            </li>
-            <li className="hover:text-yellow-400 cursor-pointer">
-              <ScrollLink to="about" smooth={true} duration={600} offset={-70} className="block h-full w-full">
-                About Us
-              </ScrollLink>
-            </li>
-            <li className="hover:text-yellow-400 cursor-pointer">
-              <ScrollLink to="destination" smooth={true} duration={600} offset={-70} className="block h-full w-full">
-                Destinations
-              </ScrollLink>
-            </li>
-            <li className="hover:text-yellow-400 cursor-pointer">
-              <RouterLink to="/packages" className="block h-full w-full">
-                Packages
-              </RouterLink>
-            </li>
-            <li className="hover:text-yellow-400 cursor-pointer">
-              <ScrollLink to="contact" smooth={true} duration={600} offset={-70} className="block h-full w-full">
-                Contact Us
-              </ScrollLink>
-            </li>
-            {/* Added Gallery link for regular pages */}
-            <li className="hover:text-yellow-400 cursor-pointer">
-              <RouterLink to="/gallery" className="block h-full w-full">
-                Gallery
-              </RouterLink>
-            </li>
-          </>
-        )}
-      </ul>
-    </nav>
+          <button
+            onClick={() => window.open("https://www.instagram.com", "_blank")}
+            className="social-button"
+          >
+            <img src="/undefined (8).jpg" alt="instagram" />
+          </button>
+
+          <button
+            onClick={() => window.open("https://twitter.com", "_blank")}
+            className="social-button"
+          >
+            <img src="/undefined (9).jpg" alt="twitter" />
+          </button>
+        </div>
+
+        {/* Right - Contact Info */}
+        <div className="contact-info">
+          <span>📞 +94 71 234 5678</span>
+          <span>✉️ info@smilelanka.com</span>
+        </div>
+      </div>
+
+      {/* 🔹 Main Navbar */}
+      <nav
+        className={`fixed top-[20px] left-0 w-full flex justify-between items-center px-10 py-6 z-40 transition-all duration-500 ${
+          show
+            ? "bg-black/70 backdrop-blur-md shadow-lg"
+            : "bg-transparent"
+        }`}
+      >
+       <div className="logo-section flex items-center gap-2">
+  <img src="/logo.png" alt="Smile Lanka Logo" className="logo-img" />
+  <h1 className="text-white font-bold text-xl tracking-wider">Smile Lanka</h1>
+</div>
+
+
+        <ul className="flex space-x-10 text-sm text-white">
+          {isPackagesPage || isPackageDetailPage ? (
+            <>
+              <li className="hover:text-yellow-400 cursor-pointer">
+                <RouterLink to="/">Home</RouterLink>
+              </li>
+              <li className="hover:text-yellow-400 cursor-pointer">
+                <RouterLink to="/packages">Packages</RouterLink>
+              </li>
+              <li className="hover:text-yellow-400 cursor-pointer">
+                <RouterLink to="/gallery">Gallery</RouterLink>
+              </li>
+            </>
+          ) : (
+            <>
+              <li className="hover:text-yellow-400 cursor-pointer">
+                <RouterLink to="/">Home</RouterLink>
+              </li>
+              <li className="hover:text-yellow-400 cursor-pointer">
+                <ScrollLink
+                  to="about"
+                  smooth={true}
+                  duration={600}
+                  offset={-70}
+                  className="cursor-pointer"
+                >
+                  About Us
+                </ScrollLink>
+              </li>
+              <li className="hover:text-yellow-400 cursor-pointer">
+                <ScrollLink
+                  to="destination"
+                  smooth={true}
+                  duration={600}
+                  offset={-70}
+                  className="cursor-pointer"
+                >
+                  Destinations
+                </ScrollLink>
+              </li>
+              <li className="hover:text-yellow-400 cursor-pointer">
+                <RouterLink to="/packages">Packages</RouterLink>
+              </li>
+              <li className="hover:text-yellow-400 cursor-pointer">
+                <ScrollLink
+                  to="contact"
+                  smooth={true}
+                  duration={600}
+                  offset={-70}
+                  className="cursor-pointer"
+                >
+                  Contact Us
+                </ScrollLink>
+              </li>
+              <li className="hover:text-yellow-400 cursor-pointer">
+                <RouterLink to="/gallery">Gallery</RouterLink>
+              </li>
+            </>
+          )}
+        </ul>
+      </nav>
+    </>
   );
 };
 

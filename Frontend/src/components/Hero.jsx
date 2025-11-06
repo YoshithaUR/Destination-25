@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const slides = [
   { id: 1, img: "https://i.pinimg.com/1200x/44/c3/c3/44c3c36798711d7f91f1eec2e1d09ba0.jpg" },
@@ -9,86 +10,118 @@ const slides = [
   { id: 5, img: "https://images.pexels.com/photos/1659438/pexels-photo-1659438.jpeg" },
 ];
 
-// Background images that correspond to the carousel images
 const backgroundImages = [
-  "https://images.unsplash.com/photo-1598152642931-bf0e8635fdf8?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170",
-  "https://images.unsplash.com/photo-1503220317375-aaad61436b1b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+  "https://images.unsplash.com/photo-1598152642931-bf0e8635fdf8?auto=format&fit=crop&q=80&w=1170",
+  "https://images.unsplash.com/photo-1503220317375-aaad61436b1b?auto=format&fit=crop&w=1170&q=80",
   "https://images.pexels.com/photos/16508231/pexels-photo-16508231.jpeg",
-  "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+  "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1170&q=80",
   "https://i.pinimg.com/736x/74/f7/5e/74f75eb6e231c942012bbdb6466dc861.jpg",
 ];
 
 const Hero = () => {
-  const [current, setCurrent] = useState(0);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-  const [slideDirection, setSlideDirection] = useState("next"); // Track slide direction for animation
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentBg, setCurrentBg] = useState(0);
+  const [direction, setDirection] = useState(1);
 
+  // Next & previous slide handlers
   const nextSlide = useCallback(() => {
-    setSlideDirection("next");
-    setCurrent((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+    setDirection(1);
+    setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+    setCurrentBg((prev) => (prev === backgroundImages.length - 1 ? 0 : prev + 1));
   }, []);
 
   const prevSlide = useCallback(() => {
-    setSlideDirection("prev");
-    setCurrent((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
+    setDirection(-1);
+    setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
+    setCurrentBg((prev) => (prev === 0 ? backgroundImages.length - 1 : prev - 1));
   }, []);
 
-  // Auto-move functionality
+  // Auto-change slide every 5s (background changes automatically with it)
   useEffect(() => {
-    let interval;
-    if (isAutoPlaying) {
-      interval = setInterval(() => {
-        nextSlide();
-      }, 3000); // Change slide every 3 seconds
-    }
-    return () => {
-      if (interval) clearInterval(interval);
-    };
-  }, [isAutoPlaying, nextSlide]);
+    const slideInterval = setInterval(nextSlide, 5000);
+    return () => clearInterval(slideInterval);
+  }, [nextSlide]);
 
-  // Handle keyboard navigation
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === "ArrowRight") {
-        e.preventDefault();
-        nextSlide();
-      } else if (e.key === "ArrowLeft") {
-        e.preventDefault();
-        prevSlide();
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [nextSlide, prevSlide]);
-
-  // Get the two images to display (current and next)
-  const getVisibleSlides = () => {
-    const nextIndex = (current + 1) % slides.length;
-    return [slides[current], slides[nextIndex]];
+  // Variants for slide motion
+  const slideVariants = {
+    enter: (direction) => ({
+      x: direction > 0 ? 300 : -300,
+      opacity: 0,
+      scale: 0.8,
+      rotateY: direction > 0 ? 45 : -45,
+    }),
+    center: {
+      x: 0,
+      opacity: 1,
+      scale: 1,
+      rotateY: 0,
+      transition: { 
+        duration: 0.7, 
+        ease: [0.43, 0.13, 0.23, 0.96],
+        opacity: { duration: 0.5 }
+      },
+    },
+    exit: (direction) => ({
+      x: direction > 0 ? -300 : 300,
+      opacity: 0,
+      scale: 0.8,
+      rotateY: direction > 0 ? -45 : 45,
+      transition: { 
+        duration: 0.7,
+        ease: [0.43, 0.13, 0.23, 0.96]
+      },
+    }),
   };
 
-  const visibleSlides = getVisibleSlides();
+  // Fade transition for background with directional slide
+  const bgVariants = {
+    enter: (direction) => ({
+      x: direction > 0 ? "100%" : "-100%",
+      opacity: 0,
+    }),
+    center: {
+      x: 0,
+      opacity: 1,
+      transition: { duration: 0.8, ease: "easeInOut" },
+    },
+    exit: (direction) => ({
+      x: direction > 0 ? "-100%" : "100%",
+      opacity: 0,
+      transition: { duration: 0.8, ease: "easeInOut" },
+    }),
+  };
 
   return (
     <section
       id="home"
       className="relative h-screen w-full flex items-center justify-start overflow-hidden"
     >
-      {/* Background with smooth transition */}
-      <div className="absolute inset-0 w-full h-full transition-opacity duration-1000">
-        <img
-          src={backgroundImages[current]}
-          alt="hero bg"
-          className="w-full h-full object-cover"
+      {/* Background slide animation */}
+      <AnimatePresence mode="wait" custom={direction}>
+        <motion.img
+          key={backgroundImages[currentBg]}
+          src={backgroundImages[currentBg]}
+          alt="Background"
+          custom={direction}
+          variants={bgVariants}
+          initial="enter"
+          animate="center"
+          exit="exit"
+          className="absolute inset-0 w-full h-full object-cover"
         />
-      </div>
+      </AnimatePresence>
 
       {/* Overlay */}
       <div className="absolute inset-0 bg-black/60"></div>
 
-      {/* Content */}
-      <div className="relative z-10 max-w-2xl ml-16">
+      {/* Text Content */}
+      <motion.div
+        key={currentSlide}
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="relative z-10 max-w-2xl ml-16"
+      >
         <p className="uppercase text-sm tracking-widest text-gray-300">
           Embark On The Journey Of A Lifetime
         </p>
@@ -101,78 +134,57 @@ const Hero = () => {
           jungles, deserts and oceans. Experience unforgettable adventures and
           stories to cherish forever.
         </p>
-        <button className="mt-6 bg-yellow-400 text-black px-6 py-3 rounded-full font-semibold hover:bg-yellow-500 transition">
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+          className="mt-6 bg-yellow-400 text-black px-6 py-3 rounded-full font-semibold hover:bg-yellow-500 transition"
+        >
           START YOUR ADVENTURE
-        </button>
-      </div>
+        </motion.button>
+      </motion.div>
 
-      {/* Slider */}
-      <div className="absolute bottom-20 right-10 flex items-center space-x-6">
-        <button
+      {/* Slides Section */}
+      <div className="absolute bottom-16 right-10 flex items-center space-x-6 z-20">
+        <motion.button
+          whileHover={{ scale: 1.1 }}
           onClick={prevSlide}
           className="p-3 bg-white/20 rounded-full hover:bg-yellow-400 transition-colors duration-300"
-          aria-label="Previous slide"
         >
           <ChevronLeft size={24} />
-        </button>
+        </motion.button>
 
-        <div className="flex space-x-4">
-          {visibleSlides.map((slide, index) => (
-            <div
-              key={slide.id}
-              className={`
-                relative overflow-hidden rounded-xl transition-all duration-500 transform-gpu
-                ${index === 0 ? 'w-32 h-64 scale-110 z-10' : 'w-28 h-56 opacity-80'}
-              `}
-              style={{
-                transformStyle: 'preserve-3d',
-                transform: index === 0 ? 'rotateY(0deg) scale(1.1)' : 'rotateY(10deg) scale(0.9)',
-                boxShadow: index === 0
-                  ? '0 25px 50px -12px rgba(0, 0, 0, 0.5)'
-                  : '0 10px 20px -5px rgba(0, 0, 0, 0.3)',
-                transition: 'all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1)'
-              }}
+        <div className="flex space-x-6">
+          <AnimatePresence mode="popLayout" custom={direction}>
+            <motion.div
+              key={slides[currentSlide].id}
+              custom={direction}
+              variants={slideVariants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{ duration: 0.8 }}
+              className="relative overflow-hidden rounded-2xl w-80 h-[32rem] shadow-2xl"
             >
               <img
-                src={slide.img}
-                alt={`Slide ${slide.id}`}
-                className="w-full h-full object-cover transition-transform duration-500"
-                style={{
-                  transform: index === 0 ? 'scale(1.05)' : 'scale(1)',
-                }}
+                src={slides[currentSlide].img}
+                alt={`Slide ${slides[currentSlide].id}`}
+                className="w-full h-full object-cover"
               />
-              {index === 0 && (
-                <div
-                  className="absolute inset-0 border-2 border-yellow-400 rounded-xl pointer-events-none"
-                  style={{
-                    transform: 'translateZ(20px)',
-                    boxShadow: '0 0 20px rgba(255, 217, 0, 0.5)',
-                  }}
-                />
-              )}
-              <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/80 to-transparent p-3">
-                <span className="text-white text-xs font-semibold">
-                  {slide.id}/5
-                </span>
-              </div>
-            </div>
-          ))}
+              <div className="absolute inset-0 border-2 border-yellow-400 rounded-2xl pointer-events-none" />
+            </motion.div>
+          </AnimatePresence>
         </div>
 
-        <button
+        <motion.button
+          whileHover={{ scale: 1.1 }}
           onClick={nextSlide}
           className="p-3 bg-white/20 rounded-full hover:bg-yellow-400 transition-colors duration-300"
-          aria-label="Next slide"
         >
           <ChevronRight size={24} />
-        </button>
-
-        <span className="text-sm ml-2 text-white">
-          {current + 1} / {slides.length}
-        </span>
+        </motion.button>
       </div>
     </section>
   );
-  };
-export default Hero;
+};
 
+export default Hero;
