@@ -72,31 +72,32 @@ const Navbar = () => {
         {/* Left - Social Media Buttons */}
         <div className="social-buttons">
           <button
-            onClick={() => window.open("https://www.facebook.com", "_blank")}
+            onClick={() => window.open("https://www.facebook.com/share/1XjEbgs2kd/?mibextid=qi2Omg", "_blank")}
             className="social-button"
           >
             <img src="/undefined (7).jpg" alt="facebook" />
           </button>
 
           <button
-            onClick={() => window.open("https://www.instagram.com", "_blank")}
+            onClick={() => window.open("https://www.linkedin.com/company/106268570/admin/dashboard/", "_blank")}
             className="social-button"
           >
-            <img src="/undefined (8).jpg" alt="instagram" />
+            <img src="/undefined (8).jpg" alt="linkdin" />
           </button>
 
           <button
-            onClick={() => window.open("https://twitter.com", "_blank")}
+            onClick={() => window.open("https://www.instagram.com/ceyloninfinite/", "_blank")}
             className="social-button"
           >
-            <img src="/undefined (9).jpg" alt="twitter" />
+            <img src="/undefined (9).jpg" alt="instagram" />
           </button>
         </div>
 
         {/* Right - Contact Info */}
         <div className="contact-info">
-          <span>📞 +94 71 234 5678</span>
-          <span>✉️ info@smilelanka.com</span>
+          <span>📞 +94763624680</span>
+          <span>✉️ www.ceylondestinations.com
+</span>
         </div>
       </div>
 
@@ -109,24 +110,33 @@ const Navbar = () => {
         }`}
       >
        <div className="logo-section flex items-center gap-2">
-  <img src="/PNG (2).png" alt="Ceylon Destination Logo" className="logo-img" />
-  <h1 className="text-white font-bold text-xl tracking-wider">Ceylon Destination</h1>
+  <img src="/logo.png" alt="Smile Lanka Logo" className="logo-img" />
+  <h1 className="text-white font-bold text-xl tracking-wider">Smile Lanka</h1>
 </div>
 
 
         <ul className="flex space-x-10 text-sm text-white">
           {isPackagesPage || isPackageDetailPage ? (
-            <>
-              <li className="hover:text-yellow-400 cursor-pointer">
-                <RouterLink to="/">Home</RouterLink>
-              </li>
-              <li className="hover:text-yellow-400 cursor-pointer">
-                <RouterLink to="/packages">Packages</RouterLink>
-              </li>
-              <li className="hover:text-yellow-400 cursor-pointer">
-                <RouterLink to="/gallery">Gallery</RouterLink>
-              </li>
-            </>
+       <>
+        <li className="hover:text-yellow-400 cursor-pointer">
+          <RouterLink to="/">Home</RouterLink>
+        </li>
+         <li className="hover:text-yellow-400 cursor-pointer">
+          <RouterLink to="/#about">About Us</RouterLink>
+         </li>
+        <li className="hover:text-yellow-400 cursor-pointer">
+            <RouterLink to="/#destination">Destinations</RouterLink>
+        </li>
+        <li className="hover:text-yellow-400 cursor-pointer">
+            <RouterLink to="/packages">Packages</RouterLink>
+        </li>
+        <li className="hover:text-yellow-400 cursor-pointer">
+            <RouterLink to="/#contact">Contact Us</RouterLink>
+        </li>
+        <li className="hover:text-yellow-400 cursor-pointer">
+            <RouterLink to="/gallery">Gallery</RouterLink>
+        </li>
+      </>
           ) : (
             <>
               <li className="hover:text-yellow-400 cursor-pointer">
