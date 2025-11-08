@@ -14,12 +14,11 @@ const ReadMoreAbout = () => {
         <div className="absolute inset-0 bg-black/70"></div>
         <div className="relative z-10 text-center px-6">
           <h1 className="text-5xl md:text-6xl font-bold mb-4">
-            Discover <span className="text-yellow-400">Sri Lanka</span>
+            Explore <span className="text-yellow-400">Sri Lanka</span>
           </h1>
           <p className="text-lg max-w-2xl mx-auto text-gray-200">
-            A paradise island where ancient culture, breathtaking landscapes, and
-            golden beaches meet — Smile Lanka invites you to explore the soul of
-            adventure.
+            An island paradise where wild jungles meet endless coastlines, 
+            where culture runs deeper than the ocean—your infinite adventure begins here.
           </p>
         </div>
       </div>
@@ -30,10 +29,9 @@ const ReadMoreAbout = () => {
           Our Story
         </h2>
         <p className="text-gray-300 leading-relaxed text-center max-w-3xl mx-auto mb-8">
-          Born from a love for exploration and a deep connection to the island’s
-          natural beauty, Smile Lanka was founded to showcase the true spirit of
-          Sri Lanka. From misty mountain trails to vibrant coastal towns, we craft
-          journeys that touch your heart and awaken your adventurous soul.
+            We're explorers who fell hopelessly in love with this island paradise. 
+            Every cascading waterfall, every wildlife encounter, every sunset over the coast reminded us—this magic needs to be shared.
+            So we built Ceylon Infinite Destinations to turn our passion into your unforgettable adventure.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
@@ -77,9 +75,9 @@ const ReadMoreAbout = () => {
       {/* Quote Section */}
       <div className="relative bg-yellow-400 py-20 text-center text-black">
         <h2 className="text-3xl font-bold mb-4">
-          “Travel not to escape life, but for life not to escape you.”
+          "The world is a book, and those who don't travel read only one page"
         </h2>
-        <p className="text-lg font-medium">— Smile Lanka Team</p>
+        <p className="text-lg font-medium">— Ceylon Infinite Destinations</p>
       </div>
 
       {/* Team Section */}
@@ -90,23 +88,29 @@ const ReadMoreAbout = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {[
             {
-              name: "Kavindu Perera",
-              role: "Adventure Guide",
+              name: "Chamila Gurusinghe",
+              role: "CEO & Founder",
               img: "https://randomuser.me/api/portraits/men/32.jpg",
             },
             {
-              name: "Dilani Fernando",
-              role: "Cultural Expert",
+              name: "Krishan Nadeera Karunarathna",
+              role: "Director,Operations Manager",
               img: "https://randomuser.me/api/portraits/women/44.jpg",
             },
             {
-              name: "Ruwan Silva",
-              role: "Nature Specialist",
+              name: "Gayan Dhanushka jayathilaka",
+              role: "Director IT & Digital support",
               img: "https://randomuser.me/api/portraits/men/48.jpg",
             },
             {
-              name: "Nimali Jayasuriya",
-              role: "Travel Planner",
+              name: "Dhanushka Wimalaweera",
+              role: "Director sales & Marketing Manger",
+              img: "https://randomuser.me/api/portraits/women/68.jpg",
+            },
+
+            {
+              name: "Narmada Gunasekara",
+              role: "Finance and Administration Manager",
               img: "https://randomuser.me/api/portraits/women/68.jpg",
             },
           ].map((member, i) => (
@@ -129,10 +133,10 @@ const ReadMoreAbout = () => {
       {/* Footer CTA */}
       <div className="bg-black/90 py-16 text-center">
         <h2 className="text-3xl font-bold mb-4">
-          Ready to Explore Sri Lanka with Us?
+          Ready to Write Your Ceylon Story?
         </h2>
         <p className="text-gray-400 mb-8">
-          Let us create your next unforgettable adventure — tailored just for you.
+          Let us design your perfect escape—where misty mountains, wild encounters, and endless horizons become your unforgettable chapters.
         </p>
         <a
           href="/contact"
