@@ -3,19 +3,54 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const slides = [
-  { id: 1, img: "https://i.pinimg.com/1200x/44/c3/c3/44c3c36798711d7f91f1eec2e1d09ba0.jpg" },
-  { id: 2, img: "https://i.pinimg.com/736x/7b/97/1c/7b971c3754a345667c8105e902ef305a.jpg" },
-  { id: 3, img: "https://i.pinimg.com/736x/a5/47/de/a547de5c2c5de7e2e527861d2cf04706.jpg" },
-  { id: 4, img: "https://i.pinimg.com/736x/ff/ed/bd/ffedbd1c6de62f65fcd82bee539aa289.jpg" },
-  { id: 5, img: "https://images.pexels.com/photos/1659438/pexels-photo-1659438.jpeg" },
+  {
+    id: 1,
+    img: "Ravana Falls In Ella, Sri Lanka - Complete Guide (2025).jpeg",
+    title: "Ella(Hill Country)",
+    subtitle: "Where Mist Meets Mountains",
+    description:
+      "A breathtaking town surrounded by tea plantations, waterfalls, and rolling hills. Enjoy the scenic train ride, hike Little Adam’s Peak, and capture the view from the Nine Arches Bridge.",
+  },
+  {
+    id: 2,
+    img: "Coconut Tree Hill is a unique cliff situated in….jpeg",
+    title: "Mirissa (Coastal Paradises)",
+    subtitle: "Golden sands and gentle waves",
+    description:
+      "A sun-soaked beach town famous for whale watching, surfing, and unforgettable sunsets. Perfect for travelers seeking relaxation and seaside adventure.",
+  },
+  {
+    id: 3,
+    img: "Kandy.jpeg",
+    title: "Kandy(Cultural Heritage)",
+    subtitle: "The heart of Sri Lankan tradition",
+    description:
+      "Home to the Temple of the Sacred Tooth Relic, Kandy blends spiritual heritage with natural beauty, offering visitors a glimpse into the island’s royal past.",
+  },
+  {
+    id: 4,
+    img: "YALA NATIONAL PARK 10 Places Not to Miss in….jpeg",
+    title: "Yala National Park(Wildlife Adventures)",
+    subtitle: "nto the wild heart of Sri Lanka",
+    description:
+      "Experience thrilling safaris in Sri Lanka’s most famous national park, where elephants, leopards, and exotic birds roam free in their natural habitat.",
+  },
+  {
+    id: 5,
+    img: "Immerse yourself in the ancient wonders of the….jpeg",
+    title: "Sigiriya Rock Fortress(Ancient Wonders)",
+    subtitle: "The Lion Rock of the kings",
+    description:
+      "A UNESCO World Heritage site rising majestically from the plains, Sigiriya is an architectural marvel and ancient citadel that tells stories of royal glory and artistry.",
+  },
 ];
 
 const backgroundImages = [
-  "https://images.unsplash.com/photo-1598152642931-bf0e8635fdf8?auto=format&fit=crop&q=80&w=1170",
-  "https://images.unsplash.com/photo-1503220317375-aaad61436b1b?auto=format&fit=crop&w=1170&q=80",
-  "https://images.pexels.com/photos/16508231/pexels-photo-16508231.jpeg",
-  "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1170&q=80",
-  "https://i.pinimg.com/736x/74/f7/5e/74f75eb6e231c942012bbdb6466dc861.jpg",
+  "Train ride in Sri Lanka.jpeg",
+  "The Beach Town of Mirissa, Sri Lanka.jpeg",
+  "Kandy lies in the center of Sri Lanka and it is….jpeg",
+  "Beyond its beaches and temples, Sri Lanka is among….jpeg",
+  "Visiting Sigiriya Rock Fortress in Sri Lanka.jpeg",
 ];
 
 const Hero = () => {
@@ -36,44 +71,33 @@ const Hero = () => {
     setCurrentBg((prev) => (prev === 0 ? backgroundImages.length - 1 : prev - 1));
   }, []);
 
-  // Auto-change slide every 5s (background changes automatically with it)
+  // Auto-change slide every 5s
   useEffect(() => {
     const slideInterval = setInterval(nextSlide, 5000);
     return () => clearInterval(slideInterval);
   }, [nextSlide]);
 
-  // Variants for slide motion
+  // Motion variants
   const slideVariants = {
     enter: (direction) => ({
       x: direction > 0 ? 300 : -300,
       opacity: 0,
       scale: 0.8,
-      rotateY: direction > 0 ? 45 : -45,
     }),
     center: {
       x: 0,
       opacity: 1,
       scale: 1,
-      rotateY: 0,
-      transition: { 
-        duration: 0.7, 
-        ease: [0.43, 0.13, 0.23, 0.96],
-        opacity: { duration: 0.5 }
-      },
+      transition: { duration: 0.8, ease: "easeInOut" },
     },
     exit: (direction) => ({
       x: direction > 0 ? -300 : 300,
       opacity: 0,
       scale: 0.8,
-      rotateY: direction > 0 ? -45 : 45,
-      transition: { 
-        duration: 0.7,
-        ease: [0.43, 0.13, 0.23, 0.96]
-      },
+      transition: { duration: 0.6 },
     }),
   };
 
-  // Fade transition for background with directional slide
   const bgVariants = {
     enter: (direction) => ({
       x: direction > 0 ? "100%" : "-100%",
@@ -114,34 +138,34 @@ const Hero = () => {
       {/* Overlay */}
       <div className="absolute inset-0 bg-black/60"></div>
 
-      {/* Text Content */}
-      <motion.div
-        key={currentSlide}
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="relative z-10 max-w-2xl ml-16"
-      >
-        <p className="uppercase text-sm tracking-widest text-gray-300">
-          Embark On The Journey Of A Lifetime
-        </p>
-        <h1 className="text-5xl font-bold mt-3 leading-tight">
-          TRAVEL FAR, <br />
-          <span className="text-yellow-400">FIND YOURSELF</span>
-        </h1>
-        <p className="text-gray-300 mt-4 text-sm">
-          Explore the world's most stunning destinations across mountains,
-          jungles, deserts and oceans. Experience unforgettable adventures and
-          stories to cherish forever.
-        </p>
-        <motion.button
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-          className="mt-6 bg-yellow-400 text-black px-6 py-3 rounded-full font-semibold hover:bg-yellow-500 transition"
+      {/* Dynamic Text Content */}
+      <AnimatePresence mode="wait" custom={direction}>
+        <motion.div
+          key={slides[currentSlide].id}
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -40 }}
+          transition={{ duration: 0.8 }}
+          className="relative z-10 max-w-2xl ml-16"
         >
-          START YOUR ADVENTURE
-        </motion.button>
-      </motion.div>
+          <p className="uppercase text-sm tracking-widest text-gray-300">
+            {slides[currentSlide].subtitle}
+          </p>
+          <h1 className="text-5xl font-bold mt-3 leading-tight text-white">
+            {slides[currentSlide].title}
+          </h1>
+          <p className="text-gray-300 mt-4 text-sm">
+            {slides[currentSlide].description}
+          </p>
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            className="mt-6 bg-yellow-400 text-black px-6 py-3 rounded-full font-semibold hover:bg-yellow-500 transition"
+          >
+            EXPLORE MORE
+          </motion.button>
+        </motion.div>
+      </AnimatePresence>
 
       {/* Slides Section */}
       <div className="absolute bottom-16 right-10 flex items-center space-x-6 z-20">
@@ -163,7 +187,7 @@ const Hero = () => {
               animate="center"
               exit="exit"
               transition={{ duration: 0.8 }}
-              className="relative overflow-hidden rounded-2xl w-80 h-[32rem] shadow-2xl"
+              className="relative overflow-hidden rounded-2xl w-64 h-[24rem] shadow-2xl"
             >
               <img
                 src={slides[currentSlide].img}
