@@ -110,7 +110,7 @@ const About = () => {
       id: 1,
       title: "Mountain Adventures",
       description: "Experience the breathtaking beauty of Sri Lanka's mountain ranges with our guided hiking tours.",
-      image: "https://i.pinimg.com/1200x/1d/91/e9/1d91e9c02b5e42104b599b0792f4a3e2.jpg"
+      image: "m.jpeg"
     },
     {
       id: 2,
