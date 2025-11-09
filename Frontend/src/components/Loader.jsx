@@ -47,7 +47,7 @@ const Loader = ({ isLoading = true }) => {
         
         {/* Company name and loading text with fade-in animation */}
         <div className="text-center animate-fade-in">
-          <h2 className="text-3xl font-bold text-white mb-3 tracking-wider">SMILE SRI LANKA</h2>
+          <h2 className="text-3xl font-bold text-white mb-3 tracking-wider">Ceylon Infinite Destinations</h2>
           <div className="flex items-center justify-center space-x-2">
             <span className="text-gray-300 text-base">Preparing your journey</span>
             <div className="flex space-x-1">
