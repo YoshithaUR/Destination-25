@@ -7,28 +7,28 @@ const CardsSection = () => {
       id: 1,
       title: "Mountain Adventures",
       description: "Experience breathtaking hikes through misty mountains and discover hidden waterfalls.",
-      image: "https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+      image: "/1.jpeg",
       delay: 100
     },
     {
       id: 2,
       title: "Beach Getaways",
       description: "Relax on pristine beaches with crystal clear waters and golden sand shores.",
-      image: "https://images.pexels.com/photos/30858001/pexels-photo-30858001.jpeg",
+      image: "/2.jpeg",
       delay: 200
     },
     {
       id: 3,
       title: "Wildlife Safaris",
       description: "Embark on thrilling safaris to see elephants, leopards, and other wildlife in their natural habitats.",
-      image: "https://images.unsplash.com/photo-1546182990-dffeafbe841d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+      image: "/3.jpeg",
       delay: 300
     },
     {
       id: 4,
       title: "Cultural Tours",
       description: "Discover ancient temples, historical sites, and experience the rich culture of Sri Lanka.",
-      image: "https://images.unsplash.com/photo-1590523278191-995cbcda646b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+      image: "/4.jpeg",
       delay: 400
     }
   ];
@@ -40,7 +40,7 @@ const CardsSection = () => {
           className="text-4xl font-bold text-center mb-4 text-white"
           data-aos="fade-up"
         >
-          WHY CHOOSE <span className="text-yellow-500">SMILE SRI LANKA</span>?
+          WHY CHOOSE <span className="text-yellow-500">Ceylon Destination</span>?
         </h2>
         <p 
           className="text-gray-400 text-center mb-16 max-w-2xl mx-auto"

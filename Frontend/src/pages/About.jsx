@@ -110,7 +110,7 @@ const About = () => {
       id: 1,
       title: "Mountain Adventures",
       description: "Experience the breathtaking beauty of Sri Lanka's mountain ranges with our guided hiking tours.",
-      image: "https://i.pinimg.com/1200x/1d/91/e9/1d91e9c02b5e42104b599b0792f4a3e2.jpg"
+      image: "m.jpeg"
     },
     {
       id: 2,
@@ -322,9 +322,9 @@ const About = () => {
             data-aos="fade-up"
             data-aos-delay="200"
           >
-            Welcome to <span className="text-yellow-400 font-semibold">Smile Sri Lanka</span> — your
-            ultimate adventure travel partner! We’re a passionate team of explorers and travel
-            enthusiasts who believe that the best way to experience life is through adventure.
+            Welcome to <span className="text-yellow-400 font-semibold">Ceylon Infinite Destinations</span> Your ultimate adventure travel partner! We're dreamers,
+             wanderers, and storytellers united by one belief: the world is meant to be explored. 
+            Join us as we turn ordinary trips into extraordinary tales
           </p>
 
           <p 
@@ -332,8 +332,9 @@ const About = () => {
             data-aos="fade-up"
             data-aos-delay="300"
           >
-            Our mission is to help travelers discover the untamed beauty of Sri Lanka — from misty
-            mountain hikes and breathtaking waterfalls to thrilling safaris and coastal escapes.
+          Our mission is to guide you through Ceylon's untamed paradise—scaling emerald peaks that touch the clouds, 
+          chasing roaring waterfalls, tracking wildlife through pristine jungles, and riding waves on sun-drenched shores.
+           Adventure is calling.
           </p>
 
           <div 
@@ -343,17 +344,17 @@ const About = () => {
           >
             <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 shadow-lg hover:bg-yellow-400/20 transition">
               <h3 className="text-xl font-semibold text-yellow-400 mb-2">🌄 Our Vision</h3>
-              <p>To inspire people to explore the world responsibly while protecting nature and culture.</p>
+              <p>To make Ceylon the world's ultimate adventure destination while protecting the paradise that makes it extraordinary</p>
             </div>
 
             <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 shadow-lg hover:bg-yellow-400/20 transition">
               <h3 className="text-xl font-semibold text-yellow-400 mb-2">🧭 Our Mission</h3>
-              <p>To offer sustainable travel experiences that connect travelers with Sri Lanka’s soul.</p>
+              <p>To guide you through Sri Lanka's hidden treasures—from cloud-kissed mountains to wild safaris—creating adventures that awaken your spirit.</p>
             </div>
 
             <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 shadow-lg hover:bg-yellow-400/20 transition">
               <h3 className="text-xl font-semibold text-yellow-400 mb-2">🤝 Our Promise</h3>
-              <p>We promise unforgettable adventures, eco-friendly practices, and meaningful connections.</p>
+              <p>Unforgettable journeys, eco-conscious travel, and authentic experiences that leave footprints only in your heart.</p>
             </div>
           </div>
 
