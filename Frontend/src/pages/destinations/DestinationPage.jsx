@@ -731,6 +731,17 @@ const DestinationPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black text-white">
+      {/* Back Button */}
+      <div className="fixed top-32 left-6 z-50">
+        <button
+          onClick={() => navigate(-1)}
+          className="bg-black/70 hover:bg-yellow-500 text-white hover:text-black w-16 h-16 rounded-full transition duration-300 transform hover:scale-110 flex items-center justify-center shadow-lg hover:shadow-2xl hover:shadow-yellow-500/50"
+          aria-label="Go back"
+        >
+          <span className="text-4xl">←</span>
+        </button>
+      </div>
+
       {/* Navbar */}
       <div className="pt-20">
         <Navbar />

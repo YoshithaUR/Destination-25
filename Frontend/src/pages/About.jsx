@@ -144,12 +144,32 @@ const About = () => {
     }
   ];
 
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [visibleDestinations, setVisibleDestinations] = useState(allDestinations.slice(0, 4));
+  // Get initial index from localStorage or default to 6 (Kandy Temple)
+  const getInitialIndex = () => {
+    if (typeof window !== 'undefined') {
+      const lastClickedId = localStorage.getItem('lastClickedDestinationId');
+      if (lastClickedId) {
+        const index = allDestinations.findIndex(d => d.id === parseInt(lastClickedId));
+        if (index !== -1) {
+          return index;
+        }
+      }
+    }
+    return 6; // Default to Kandy Temple
+  };
+
+  const [currentIndex, setCurrentIndex] = useState(getInitialIndex());
+  const [visibleDestinations, setVisibleDestinations] = useState(allDestinations.slice(getInitialIndex(), getInitialIndex() + 4));
   const [servicesIndex, setServicesIndex] = useState(0); // For services carousel
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [focusedService, setFocusedService] = useState(-1); // Track focused service card
   const navigate = useNavigate();
+
+  // Handle destination click - save to localStorage
+  const handleDestinationClick = (destination) => {
+    localStorage.setItem('lastClickedDestinationId', destination.id);
+    navigate(destination.link);
+  };
 
   // Update visible destinations when index changes
   useEffect(() => {
@@ -371,78 +391,113 @@ const About = () => {
       </section>
 
       {/* DESTINATIONS SECTION */}
-      <section
-      id="destination"
-        className="py-16 bg-gradient-to-br from-gray-900 to-black"
-        onMouseEnter={() => setIsAutoPlaying(false)}
-        onMouseLeave={() => setIsAutoPlaying(true)}
-        data-aos="fade-up"
+      
+<section
+  id="destination"
+  className="py-16 bg-gradient-to-br from-gray-900 to-black"
+  onMouseEnter={() => setIsAutoPlaying(false)}
+  onMouseLeave={() => setIsAutoPlaying(true)}
+  data-aos="fade-up"
+>
+  <div className="max-w-6xl mx-auto px-6">
+    <h2 className="text-4xl font-bold text-center mb-4 text-white">
+      POPULAR <span className="text-yellow-500">DESTINATIONS</span>
+    </h2>
+    <p className="text-gray-400 text-center mb-12 max-w-2xl mx-auto">
+      Explore the most breathtaking locations across Sri Lanka
+    </p>
+
+    <div className="relative">
+      {/* Left Navigation Button */}
+      <button
+        onClick={() => {
+          prevDestinations();
+          setIsAutoPlaying(false);
+        }}
+        className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-all duration-300"
+        aria-label="Previous destinations"
       >
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-4xl font-bold text-center mb-4 text-white">
-            POPULAR <span className="text-yellow-500">DESTINATIONS</span>
-          </h2>
+        <ChevronLeft size={24} />
+      </button>
 
-          <div className="relative">
-            <button
-              onClick={() => {
-                prevDestinations();
-                setIsAutoPlaying(false);
+      {/* Right Navigation Button */}
+      <button
+        onClick={() => {
+          nextDestinations();
+          setIsAutoPlaying(false);
+        }}
+        className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-all duration-300"
+        aria-label="Next destinations"
+      >
+        <ChevronRight size={24} />
+      </button>
+
+      {/* Destinations Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-12">
+        {visibleDestinations.map((destination, index) => (
+          <div
+            key={destination.id}
+            className="group relative h-96 rounded-2xl overflow-hidden shadow-2xl cursor-pointer transform transition-all duration-500 hover:-translate-y-3 hover:shadow-yellow-500/50"
+            onClick={() => handleDestinationClick(destination)}
+            data-aos="fade-up"
+            data-aos-delay={index * 50}
+          >
+            {/* Background Image with Zoom Effect and Rotation */}
+            <div 
+              className="absolute inset-0 bg-cover bg-center transition-all duration-700 group-hover:scale-125 group-hover:rotate-2 group-hover:opacity-30"
+              style={{ 
+                backgroundImage: `url(${destination.image})`,
               }}
-              className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full"
-            >
-              <ChevronLeft size={24} />
-            </button>
+            ></div>
+            
+            {/* Gradient Overlay with Blue on Hover */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent group-hover:bg-blue-900 transition-all duration-500"></div>
+            
+            {/* Yellow Border on Hover */}
+            <div className="absolute inset-0 border-2 border-transparent group-hover:border-yellow-500 rounded-2xl transition-all duration-500"></div>
 
-            <button
-              onClick={() => {
-                nextDestinations();
-                setIsAutoPlaying(false);
-              }}
-              className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full"
-            >
-              <ChevronRight size={24} />
-            </button>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 px-12">
-              {visibleDestinations.map((destination) => (
-                <div
-                  key={destination.id}
-                  className="flex flex-col h-80 rounded-2xl overflow-hidden shadow-xl cursor-pointer"
-                  onClick={() => navigate(destination.link)}
-                  data-aos="fade-up"
-                  data-aos-delay={destination.id * 50}
-                >
-                  <div className="relative flex-shrink-0">
-                    <img
-                      src={destination.image}
-                      alt={destination.name}
-                      className="w-full h-32 object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-                    <div className="absolute top-2 right-2 bg-yellow-500 text-black px-2 py-1 rounded-full text-xs font-bold">
-                      ★ {destination.rating}
-                    </div>
-                  </div>
-                  <div className="flex flex-col flex-grow p-4 bg-gray-800">
-                    <h3 className="text-white font-bold text-lg mb-2">{destination.name}</h3>
-                    <p className="text-gray-300 text-sm mb-4 flex-grow">{destination.description}</p>
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        navigate(destination.link);
-                      }}
-                      className="py-2 border-2 border-yellow-500 text-yellow-500 rounded-lg hover:bg-yellow-500 hover:text-black transition"
-                    >
-                      Explore
-                    </button>
-                  </div>
-                </div>
-              ))}
+            {/* Shine Effect on Hover */}
+            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+              <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 translate-x-full group-hover:translate-x-[-200%] transition-transform duration-1000"></div>
             </div>
-          </div>
-        </div>
-      </section>
 
+            {/* Rating Badge */}
+            <div className="absolute top-4 right-4 bg-yellow-500 text-black px-3 py-1 rounded-full text-sm font-bold z-10 transform transition-all duration-300 group-hover:scale-110">
+              ★ {destination.rating}
+            </div>
+            
+            {/* Content Container */}
+            <div className="relative z-10 h-full flex flex-col justify-end p-6">
+              {/* Title with Slide-up Animation */}
+              <h3 className="text-xl font-bold text-white mb-2 transform transition-all duration-500 group-hover:translate-y-[-8px]">
+                {destination.name}
+              </h3>
+              
+              {/* Description with Fade-in Effect */}
+              <p className="text-gray-300 text-sm opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-32 transition-all duration-500 group-hover:mb-4">
+                {destination.description}
+              </p>
+              
+              {/* Explore Button - Appears on Hover */}
+              <button 
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleDestinationClick(destination);
+                }}
+                className="px-4 py-2 bg-yellow-500 text-black rounded-lg opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 hover:bg-yellow-400 font-semibold"
+              >
+                Explore Now →
+              </button>
+            </div>
+
+            {/* Corner Accent - Decorative Element */}
+            <div className="absolute top-0 left-0 w-0 h-0 border-t-[40px] border-t-yellow-500/0 border-r-[40px] border-r-transparent group-hover:border-t-yellow-500/80 transition-all duration-500"></div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
       {/* SERVICES SECTION */}
       <section 
         className="py-16 bg-gradient-to-br from-gray-800 to-gray-900"
