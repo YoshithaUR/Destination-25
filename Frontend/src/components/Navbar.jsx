@@ -110,9 +110,16 @@ const Navbar = () => {
         }`}
       >
        <div className="logo-section flex items-center gap-2">
-  <img src="/logo.png" alt="Smile Lanka Logo" className="logo-img" />
-  <h1 className="text-white font-bold text-xl tracking-wider">Smile Lanka</h1>
+  {/* Increased size to h-28 w-28 (112px by 112px) */}
+  <div className="rounded-full border-4 h-20 w-20 flex items-center justify-center" style={{ borderColor: '#82233e' }}>
+    <img src="/Untitled design (2).png" alt="Smile Lanka Logo" className="logo-img-full h-full w-full rounded-full object-cover" />
+  </div>
+  <h1 className="text-white font-bold text-xl tracking-wider">Ceylon Destinations</h1>
 </div>
+
+
+
+
 
 
         <ul className="flex space-x-10 text-sm text-white">
