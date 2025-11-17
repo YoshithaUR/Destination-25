@@ -76,15 +76,15 @@ const GoldenExperience = () => {
           <h1 className="text-5xl md:text-7xl font-bold mb-6">{packageData.name}</h1>
           <p className="text-2xl text-gray-300 max-w-3xl mx-auto mb-8">{packageData.description}</p>
           <div className="flex flex-wrap justify-center items-center gap-4">
-            <div className="flex items-center bg-yellow-500/20 px-4 py-2 rounded-full">
-              <span className="text-yellow-500 mr-2">★</span>
+            <div className="flex items-center bg-white/20 px-4 py-2 rounded-full">
+              <span className="text-red-900 mr-2">★</span>
               <span className="font-bold">{packageData.rating}/5.0</span>
             </div>
             <div className="bg-gray-700/50 px-4 py-2 rounded-full">
               <span>{packageData.duration}</span>
             </div>
-            <div className="bg-yellow-500/20 px-4 py-2 rounded-full">
-              <span className="text-yellow-500 font-bold">{packageData.price}</span>
+            <div className="bg-white/20 px-4 py-2 rounded-full">
+              <span className="text-red-900 font-bold">{packageData.price}</span>
             </div>
           </div>
         </div>
@@ -94,14 +94,14 @@ const GoldenExperience = () => {
       <section className="py-16 px-6 max-w-6xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
-            <h2 className="text-4xl font-bold mb-6 text-yellow-500">Discover {packageData.name}</h2>
+            <h2 className="text-4xl font-bold mb-6 text-red-900">Discover {packageData.name}</h2>
             <p className="text-gray-300 text-lg mb-8 leading-relaxed">
               {packageData.longDescription}
             </p>
             <div className="grid grid-cols-2 gap-4">
               {packageData.facts.map((fact, index) => (
                 <div key={index} className="flex items-center bg-gray-800/50 p-3 rounded-lg">
-                  <div className="w-2 h-2 bg-yellow-500 rounded-full mr-3"></div>
+                  <div className="w-2 h-2 bg-white rounded-full mr-3"></div>
                   <span className="text-gray-300">{fact}</span>
                 </div>
               ))}
@@ -120,7 +120,7 @@ const GoldenExperience = () => {
       {/* Detailed Sections */}
       <section className="py-16 px-6 bg-gray-900/50">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-16 text-yellow-500">What's Included in {packageData.name}</h2>
+          <h2 className="text-4xl font-bold text-center mb-16 text-red-900">What's Included in {packageData.name}</h2>
           
           <div className="space-y-20">
             {packageData.detailedInfo.map((info, index) => (
@@ -149,7 +149,7 @@ const GoldenExperience = () => {
 
       {/* Inclusions & Exclusions */}
       <section className="py-16 px-6 max-w-6xl mx-auto">
-        <h2 className="text-4xl font-bold text-center mb-16 text-yellow-500">Package Details</h2>
+        <h2 className="text-4xl font-bold text-center mb-16 text-red-900">Package Details</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <div className="bg-gray-800/50 rounded-2xl p-8">
             <h3 className="text-2xl font-bold mb-6 text-green-400">What's Included</h3>
@@ -165,11 +165,11 @@ const GoldenExperience = () => {
             </ul>
           </div>
           <div className="bg-gray-800/50 rounded-2xl p-8">
-            <h3 className="text-2xl font-bold mb-6 text-red-400">What's Not Included</h3>
+            <h3 className="text-2xl font-bold mb-6 text-red-800">What's Not Included</h3>
             <ul className="space-y-3">
               {packageData.exclusions.map((item, index) => (
                 <li key={index} className="flex items-start">
-                  <svg className="w-5 h-5 text-red-400 mr-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <svg className="w-5 h-5 text-red-800 mr-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
                   </svg>
                   <span className="text-gray-300">{item}</span>
@@ -182,7 +182,7 @@ const GoldenExperience = () => {
 
       {/* Gallery Section */}
       <section className="py-16 px-6 bg-gray-900/50">
-        <h2 className="text-4xl font-bold text-center mb-16 text-yellow-500">Photo Gallery</h2>
+        <h2 className="text-4xl font-bold text-center mb-16 text-red-900">Photo Gallery</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {packageData.gallery.map((img, index) => (
             <div key={index} className="rounded-xl overflow-hidden shadow-lg group">
@@ -209,10 +209,10 @@ const GoldenExperience = () => {
             Book your {packageData.name} package with Smile Sri Lanka and experience the magic of Sri Lanka.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <button className="bg-black hover:bg-gray-900 text-white font-bold py-4 px-8 rounded-full transition duration-300 transform hover:-translate-y-1">
+            <button className="bg-black hover:bg-red-900 text-white font-bold py-4 px-8 rounded-full transition duration-300 transform hover:-translate-y-1">
               Book Now - {packageData.price}
             </button>
-            <button className="bg-white/20 hover:bg-white/30 text-white font-bold py-4 px-8 rounded-full transition duration-300 backdrop-blur-sm">
+            <button className="bg-white/20 hover:bg-red-900/30 text-white font-bold py-4 px-8 rounded-full transition duration-300 backdrop-blur-sm">
               Contact Us
             </button>
           </div>

@@ -118,31 +118,31 @@ const Navbar = () => {
         <ul className="flex space-x-10 text-sm text-white">
           {isPackagesPage || isPackageDetailPage ? (
        <>
-        <li className="hover:text-yellow-400 cursor-pointer">
+        <li className="hover:text-red-800 cursor-pointer">
           <RouterLink to="/">Home</RouterLink>
         </li>
-         <li className="hover:text-yellow-400 cursor-pointer">
+         <li className="hover:text-red-800 cursor-pointer">
           <RouterLink to="/#about">About Us</RouterLink>
          </li>
-        <li className="hover:text-yellow-400 cursor-pointer">
+        <li className="hover:text-red-800 cursor-pointer">
             <RouterLink to="/#destination">Destinations</RouterLink>
         </li>
-        <li className="hover:text-yellow-400 cursor-pointer">
+        <li className="hover:text-red-800 cursor-pointer">
             <RouterLink to="/packages">Packages</RouterLink>
         </li>
-        <li className="hover:text-yellow-400 cursor-pointer">
+        <li className="hover:text-red-800 cursor-pointer">
             <RouterLink to="/#contact">Contact Us</RouterLink>
         </li>
-        <li className="hover:text-yellow-400 cursor-pointer">
+        <li className="hover:text-red-800 cursor-pointer">
             <RouterLink to="/gallery">Gallery</RouterLink>
         </li>
       </>
           ) : (
             <>
-              <li className="hover:text-yellow-400 cursor-pointer">
+              <li className="hover:text-red-800 cursor-pointer">
                 <RouterLink to="/">Home</RouterLink>
               </li>
-              <li className="hover:text-yellow-400 cursor-pointer">
+              <li className="hover:text-red-800 cursor-pointer">
                 <ScrollLink
                   to="about"
                   smooth={true}
@@ -153,7 +153,7 @@ const Navbar = () => {
                   About Us
                 </ScrollLink>
               </li>
-              <li className="hover:text-yellow-400 cursor-pointer">
+              <li className="hover:text-red-800 cursor-pointer">
                 <ScrollLink
                   to="destination"
                   smooth={true}
@@ -164,10 +164,10 @@ const Navbar = () => {
                   Destinations
                 </ScrollLink>
               </li>
-              <li className="hover:text-yellow-400 cursor-pointer">
+              <li className="hover:text-red-800 cursor-pointer">
                 <RouterLink to="/packages">Packages</RouterLink>
               </li>
-              <li className="hover:text-yellow-400 cursor-pointer">
+              <li className="hover:text-red-800 cursor-pointer">
                 <ScrollLink
                   to="contact"
                   smooth={true}
@@ -178,7 +178,7 @@ const Navbar = () => {
                   Contact Us
                 </ScrollLink>
               </li>
-              <li className="hover:text-yellow-400 cursor-pointer">
+              <li className="hover:text-red-800 cursor-pointer">
                 <RouterLink to="/gallery">Gallery</RouterLink>
               </li>
             </>

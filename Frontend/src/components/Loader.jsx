@@ -7,16 +7,16 @@ const Loader = ({ isLoading = true }) => {
     <div className="fixed inset-0 bg-gradient-to-br from-gray-900 via-black to-gray-900 bg-opacity-90 backdrop-blur-md flex items-center justify-center z-50">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-yellow-500 rounded-full mix-blend-soft-light filter blur-3xl opacity-20 animate-pulse animation-delay-2000"></div>
+        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-white rounded-full mix-blend-soft-light filter blur-3xl opacity-20 animate-pulse animation-delay-2000"></div>
         <div className="absolute top-3/4 right-1/4 w-48 h-48 bg-blue-500 rounded-full mix-blend-soft-light filter blur-3xl opacity-20 animate-pulse animation-delay-3000"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full mix-blend-soft-light filter blur-3xl opacity-10 animate-ping animation-delay-5000"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-red-900 to-orange-500 rounded-full mix-blend-soft-light filter blur-3xl opacity-10 animate-ping animation-delay-5000"></div>
       </div>
       
       <div className="flex flex-col items-center relative z-10">
         {/* Enhanced spinner with company branding */}
         <div className="relative w-24 h-24 mb-8">
           {/* Outer ring with gradient */}
-          <div className="absolute inset-0 rounded-full border-4 border-transparent border-t-yellow-500 animate-spin-slow"></div>
+          <div className="absolute inset-0 rounded-full border-4 border-transparent border-t-red-900 animate-spin-slow"></div>
           
           {/* Middle ring */}
           <div className="absolute inset-2 rounded-full border-4 border-transparent border-r-blue-400 animate-spin-reverse animation-delay-200"></div>
@@ -26,7 +26,7 @@ const Loader = ({ isLoading = true }) => {
           
           {/* Center logo with pulse animation */}
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-yellow-500 to-orange-500 flex items-center justify-center animate-pulse">
+            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-red-900 to-orange-500 flex items-center justify-center animate-pulse">
               <svg 
                 xmlns="http://www.w3.org/2000/svg" 
                 width="28" 
@@ -51,9 +51,9 @@ const Loader = ({ isLoading = true }) => {
           <div className="flex items-center justify-center space-x-2">
             <span className="text-gray-300 text-base">Preparing your journey</span>
             <div className="flex space-x-1">
-              <div className="w-2 h-2 bg-yellow-500 rounded-full animate-bounce animation-delay-100"></div>
-              <div className="w-2 h-2 bg-yellow-500 rounded-full animate-bounce animation-delay-300"></div>
-              <div className="w-2 h-2 bg-yellow-500 rounded-full animate-bounce animation-delay-500"></div>
+              <div className="w-2 h-2 bg-white rounded-full animate-bounce animation-delay-100"></div>
+              <div className="w-2 h-2 bg-white rounded-full animate-bounce animation-delay-300"></div>
+              <div className="w-2 h-2 bg-white rounded-full animate-bounce animation-delay-500"></div>
             </div>
           </div>
         </div>

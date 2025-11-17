@@ -335,14 +335,14 @@ const About = () => {
             className="text-5xl font-bold mb-6"
             data-aos="fade-down"
           >
-            ABOUT <span className="text-yellow-400">US</span>
+            ABOUT <span className="text-red-800">US</span>
           </h1>
           <p 
             className="text-lg text-gray-200 leading-relaxed max-w-3xl mx-auto"
             data-aos="fade-up"
             data-aos-delay="200"
           >
-            Welcome to <span className="text-yellow-400 font-semibold">Ceylon Infinite Destinations</span> Your ultimate adventure travel partner! We're dreamers,
+            Welcome to <span className="text-red-800 font-semibold">Ceylon Infinite Destinations</span> Your ultimate adventure travel partner! We're dreamers,
              wanderers, and storytellers united by one belief: the world is meant to be explored. 
             Join us as we turn ordinary trips into extraordinary tales
           </p>
@@ -362,25 +362,25 @@ const About = () => {
             data-aos="fade-up"
             data-aos-delay="400"
           >
-            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 shadow-lg hover:bg-yellow-400/20 transition">
-              <h3 className="text-xl font-semibold text-yellow-400 mb-2">🌄 Our Vision</h3>
+            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 shadow-lg hover:bg-red-900/20 transition">
+              <h3 className="text-xl font-semibold text-red-800 mb-2">🌄 Our Vision</h3>
               <p>To make Ceylon the world's ultimate adventure destination while protecting the paradise that makes it extraordinary</p>
             </div>
 
-            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 shadow-lg hover:bg-yellow-400/20 transition">
-              <h3 className="text-xl font-semibold text-yellow-400 mb-2">🧭 Our Mission</h3>
+            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 shadow-lg hover:bg-red-900/20 transition">
+              <h3 className="text-xl font-semibold text-red-800 mb-2">🧭 Our Mission</h3>
               <p>To guide you through Sri Lanka's hidden treasures—from cloud-kissed mountains to wild safaris—creating adventures that awaken your spirit.</p>
             </div>
 
-            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 shadow-lg hover:bg-yellow-400/20 transition">
-              <h3 className="text-xl font-semibold text-yellow-400 mb-2">🤝 Our Promise</h3>
+            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 shadow-lg hover:bg-red-900/20 transition">
+              <h3 className="text-xl font-semibold text-red-800 mb-2">🤝 Our Promise</h3>
               <p>Unforgettable journeys, eco-conscious travel, and authentic experiences that leave footprints only in your heart.</p>
             </div>
           </div>
 
           <Link to="/about-more">
             <button 
-              className="mt-10 bg-yellow-400 text-black px-8 py-3 rounded-full font-semibold hover:bg-yellow-500 transition"
+              className="mt-10 bg-white text-black px-8 py-3 rounded-full font-semibold hover:bg-red-900 transition"
               data-aos="zoom-in"
               data-aos-delay="500"
             >
@@ -401,7 +401,7 @@ const About = () => {
 >
   <div className="max-w-6xl mx-auto px-6">
     <h2 className="text-4xl font-bold text-center mb-4 text-white">
-      POPULAR <span className="text-yellow-500">DESTINATIONS</span>
+      POPULAR <span className="text-red-900">DESTINATIONS</span>
     </h2>
     <p className="text-gray-400 text-center mb-12 max-w-2xl mx-auto">
       Explore the most breathtaking locations across Sri Lanka
@@ -437,7 +437,7 @@ const About = () => {
         {visibleDestinations.map((destination, index) => (
           <div
             key={destination.id}
-            className="group relative h-96 rounded-2xl overflow-hidden shadow-2xl cursor-pointer transform transition-all duration-500 hover:-translate-y-3 hover:shadow-yellow-500/50"
+            className="group relative h-96 rounded-2xl overflow-hidden shadow-2xl cursor-pointer transform transition-all duration-500 hover:-translate-y-3 hover:shadow-red-900/50"
             onClick={() => handleDestinationClick(destination)}
             data-aos="fade-up"
             data-aos-delay={index * 50}
@@ -454,7 +454,7 @@ const About = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent group-hover:bg-blue-900 transition-all duration-500"></div>
             
             {/* Yellow Border on Hover */}
-            <div className="absolute inset-0 border-2 border-transparent group-hover:border-yellow-500 rounded-2xl transition-all duration-500"></div>
+            <div className="absolute inset-0 border-2 border-transparent group-hover:border-red-900 rounded-2xl transition-all duration-500"></div>
 
             {/* Shine Effect on Hover */}
             <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
@@ -462,7 +462,7 @@ const About = () => {
             </div>
 
             {/* Rating Badge */}
-            <div className="absolute top-4 right-4 bg-yellow-500 text-black px-3 py-1 rounded-full text-sm font-bold z-10 transform transition-all duration-300 group-hover:scale-110">
+            <div className="absolute top-4 right-4 bg-white text-black px-3 py-1 rounded-full text-sm font-bold z-10 transform transition-all duration-300 group-hover:scale-110">
               ★ {destination.rating}
             </div>
             
@@ -484,14 +484,14 @@ const About = () => {
                   e.stopPropagation();
                   handleDestinationClick(destination);
                 }}
-                className="px-4 py-2 bg-yellow-500 text-black rounded-lg opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 hover:bg-yellow-400 font-semibold"
+                className="px-4 py-2 bg-white text-black rounded-lg opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 hover:bg-red-900 font-semibold"
               >
                 Explore Now →
               </button>
             </div>
 
             {/* Corner Accent - Decorative Element */}
-            <div className="absolute top-0 left-0 w-0 h-0 border-t-[40px] border-t-yellow-500/0 border-r-[40px] border-r-transparent group-hover:border-t-yellow-500/80 transition-all duration-500"></div>
+            <div className="absolute top-0 left-0 w-0 h-0 border-t-[40px] border-t-red-900/0 border-r-[40px] border-r-transparent group-hover:border-t-red-900/80 transition-all duration-500"></div>
           </div>
         ))}
       </div>
@@ -499,67 +499,107 @@ const About = () => {
   </div>
 </section>
       {/* SERVICES SECTION */}
-      <section 
-        className="py-16 bg-gradient-to-br from-gray-800 to-gray-900"
-        data-aos="fade-up"
+<section 
+  className="py-16 bg-gradient-to-br from-gray-800 to-gray-900"
+  data-aos="fade-up"
+>
+  <div className="max-w-6xl mx-auto px-6">
+    <h2 className="text-4xl font-bold text-center mb-4 text-white">
+      OUR <span className="text-red-500">SERVICES</span>
+    </h2>
+    <p className="text-gray-400 text-center mb-12 max-w-2xl mx-auto">
+      Discover our range of exceptional travel services designed for your perfect Sri Lankan adventure
+    </p>
+
+    <div className="relative">
+      {/* Left Navigation Button */}
+      <button
+        onClick={() => {
+          prevServices();
+        }}
+        className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-all duration-300"
+        aria-label="Previous services"
       >
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-4xl font-bold text-center mb-4 text-white">
-            OUR <span className="text-yellow-500">SERVICES</span>
-          </h2>
+        <ChevronLeft size={24} />
+      </button>
 
-          <div className="relative">
-            <button
-              onClick={() => {
-                prevServices();
+      {/* Right Navigation Button */}
+      <button
+        onClick={() => {
+          nextServices();
+        }}
+        className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-all duration-300"
+        aria-label="Next services"
+      >
+        <ChevronRight size={24} />
+      </button>
+
+      {/* Services Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-12">
+        {services.slice(servicesIndex, servicesIndex + 3).map((service, i) => (
+          <div
+            key={service.id}
+            className="group relative h-96 rounded-2xl overflow-hidden shadow-2xl cursor-pointer transform transition-all duration-500 hover:-translate-y-3 hover:shadow-red-500/50"
+            tabIndex={0}
+            onFocus={() => setFocusedService(i)}
+            onBlur={() => setFocusedService(-1)}
+            data-aos="fade-up"
+            data-aos-delay={i * 100}
+          >
+            {/* Background Image with Zoom Effect */}
+            <div 
+              className="absolute inset-0 bg-cover bg-center transition-all duration-700 group-hover:scale-110"
+              style={{ 
+                backgroundImage: `url(${service.image})`,
               }}
-              className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full"
-            >
-              <ChevronLeft size={24} />
-            </button>
+            ></div>
+            
+            {/* Gradient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+            
+            {/* Yellow Border on Hover */}
+            <div className={`absolute inset-0 border-2 rounded-2xl transition-all duration-500 ${
+              focusedService === i 
+                ? "border-red-500" 
+                : "border-transparent group-hover:border-red-500"
+            }`}></div>
 
-            <button
-              onClick={() => {
-                nextServices();
-              }}
-              className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full"
-            >
-              <ChevronRight size={24} />
-            </button>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-12">
-              {services.slice(servicesIndex, servicesIndex + 3).map((service, i) => (
-                <div
-                  key={service.id}
-                  className={`rounded-2xl overflow-hidden shadow-xl bg-gray-800 hover:bg-gray-700 border ${
-                    focusedService === i ? "border-yellow-500 ring-4 ring-yellow-500/30 scale-105" : "border-gray-700"
-                  } transition-all`}
-                  tabIndex={0}
-                  onFocus={() => setFocusedService(i)}
-                  onBlur={() => setFocusedService(-1)}
-                  data-aos="fade-up"
-                  data-aos-delay={i * 100}
-                >
-                  <img
-                    src={service.image}
-                    alt={service.title}
-                    className="w-full h-48 object-cover transition-transform duration-700 hover:scale-110"
-                  />
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-white mb-3">{service.title}</h3>
-                    <p className="text-gray-300 text-sm mb-4">{service.description}</p>
-                 
-                    <button className="w-full py-2 border-2 border-yellow-500 text-yellow-500 rounded-lg hover:bg-yellow-500 hover:text-black transition">
-                      Read More
-                    </button>
-                    
-                  </div>
-                </div>
-              ))}
+            {/* Shine Effect on Hover */}
+            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+              <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 translate-x-full group-hover:translate-x-[-200%] transition-transform duration-1000"></div>
+            </div>
+            
+            {/* Content Container */}
+            <div className="relative z-10 h-full flex flex-col justify-end p-6">
+ 
+              
+              {/* Title with Slide-up Animation */}
+              <h3 className="text-xl font-bold text-white mb-2 transform transition-all duration-300 group-hover:translate-y-[-4px]">
+                {service.title}
+              </h3>
+              
+              {/* Description */}
+              <p className="text-gray-300 text-sm mb-4 line-clamp-2">
+                {service.description}
+              </p>
+              
+              {/* Button */}
+              <button 
+                onClick={(e) => {
+                  e.stopPropagation();
+                  console.log(`Service selected: ${service.title}`);
+                }}
+                className="px-4 py-2 border-2 border-red-500 text-red-500 rounded-lg bg-white/10 hover:bg-red-500 hover:text-white transition-all duration-300 font-semibold"
+              >
+                Learn More
+              </button>
             </div>
           </div>
-        </div>
-      </section>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
     </div>
   );
 };

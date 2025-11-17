@@ -497,7 +497,7 @@ const CustomTripPlanner = () => {
                                     <h5 className="font-semibold text-sm text-gray-800">{hotel.name}</h5>
                                     <div className="flex gap-0.5 mt-1">
                                       {[...Array(hotel.stars)].map((_, i) => (
-                                        <span key={i} className="text-yellow-500 text-xs">★</span>
+                                        <span key={i} className="text-red-900 text-xs">★</span>
                                       ))}
                                     </div>
                                     <p className="text-blue-600 font-bold text-sm mt-1">

@@ -41,11 +41,11 @@ const GalleryUpload = () => {
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 text-center text-white">
        
-      <h1 className="text-5xl font-bold mb-6  text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-orange-500 to-yellow-300 animate-pulse tracking-wider drop-shadow-[0_0_15px_rgba(255,255,100,0.3)]">
+      <h1 className="text-5xl font-bold mb-6  text-transparent bg-clip-text bg-gradient-to-r from-red-800 via-orange-500 to-yellow-300 animate-pulse tracking-wider drop-shadow-[0_0_15px_rgba(255,255,100,0.3)]">
         Travel Gallery
       </h1>
 
-     <label className="bg-yellow-400 text-black px-6 py-3 rounded-full font-semibold cursor-pointer hover:bg-yellow-500 transition mb-10">
+     <label className="bg-white text-black px-6 py-3 rounded-full font-semibold cursor-pointer hover:bg-red-900 transition mb-10">
         {uploading ? "Uploading..." : "Upload Your Image"}
         <input
           type="file"

@@ -32,7 +32,7 @@ const Contact = () => {
       data-aos="fade-in"
     >
       {/* Background blur circles */}
-      <div className="absolute -top-32 -left-20 w-96 h-96 bg-yellow-400/20 rounded-full blur-3xl"></div>
+      <div className="absolute -top-32 -left-20 w-96 h-96 bg-white/20 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-500/20 rounded-full blur-3xl"></div>
 
       <div className="relative z-10 w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -57,11 +57,11 @@ const Contact = () => {
           <div className="space-y-6">
             {/* Info cards */}
             <div 
-              className="flex items-center space-x-4 bg-white/10 p-4 rounded-xl backdrop-blur-md hover:bg-white/20 transition"
+              className="flex items-center space-x-4 bg-white/10 p-4 rounded-xl backdrop-blur-md hover:bg-red-900/20 transition"
               data-aos="fade-up"
               data-aos-delay="200"
             >
-              <Mail className="w-8 h-8 text-yellow-400" />
+              <Mail className="w-8 h-8 text-red-800" />
               <div>
                 <h4 className="font-semibold">Email Us</h4>
                 <p className="text-gray-300">nilu@smilelankatours.com</p>
@@ -69,11 +69,11 @@ const Contact = () => {
             </div>
 
             <div 
-              className="flex items-center space-x-4 bg-white/10 p-4 rounded-xl backdrop-blur-md hover:bg-white/20 transition"
+              className="flex items-center space-x-4 bg-white/10 p-4 rounded-xl backdrop-blur-md hover:bg-red-900/20 transition"
               data-aos="fade-up"
               data-aos-delay="300"
             >
-              <Phone className="w-8 h-8 text-yellow-400" />
+              <Phone className="w-8 h-8 text-red-800" />
               <div>
                 <h4 className="font-semibold">Call Us</h4>
                 <p className="text-gray-300">+94 70 643 2832</p>
@@ -81,11 +81,11 @@ const Contact = () => {
             </div>
 
             <div 
-              className="flex items-center space-x-4 bg-white/10 p-4 rounded-xl backdrop-blur-md hover:bg-white/20 transition"
+              className="flex items-center space-x-4 bg-white/10 p-4 rounded-xl backdrop-blur-md hover:bg-red-900/20 transition"
               data-aos="fade-up"
               data-aos-delay="400"
             >
-              <MapPin className="w-8 h-8 text-yellow-400" />
+              <MapPin className="w-8 h-8 text-red-800" />
               <div>
                 <h4 className="font-semibold">Visit Us</h4>
                 <p className="text-gray-300">
@@ -102,7 +102,7 @@ const Contact = () => {
           data-aos="fade-left"
           data-aos-delay="200"
         >
-          <h3 className="text-2xl font-semibold mb-6 text-yellow-400">
+          <h3 className="text-2xl font-semibold mb-6 text-red-800">
             Send Us a Message
           </h3>
 
@@ -114,7 +114,7 @@ const Contact = () => {
                 name="name"
                 type="text"
                 placeholder="Your name"
-                className="w-full p-3 rounded-lg bg-white/20 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                className="w-full p-3 rounded-lg bg-white/20 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-red-800"
                 required
               />
             </div>
@@ -125,7 +125,7 @@ const Contact = () => {
                 name="email"
                 type="email"
                 placeholder="Your email"
-                className="w-full p-3 rounded-lg bg-white/20 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                className="w-full p-3 rounded-lg bg-white/20 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-red-800"
                 required
               />
             </div>
@@ -136,14 +136,14 @@ const Contact = () => {
                 name="message"
                 placeholder="Write your message..."
                 rows="5"
-                className="w-full p-3 rounded-lg bg-white/20 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                className="w-full p-3 rounded-lg bg-white/20 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-red-800"
                 required
               ></textarea>
             </div>
 
             <button
               type="submit"
-              className="w-full py-3 bg-yellow-400 text-black rounded-lg font-semibold hover:bg-yellow-500 transition"
+              className="w-full py-3 bg-white text-black rounded-lg font-semibold hover:bg-red-900 transition"
             >
               Send Message
             </button>

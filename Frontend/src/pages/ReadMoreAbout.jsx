@@ -14,7 +14,7 @@ const ReadMoreAbout = () => {
         <div className="absolute inset-0 bg-black/70"></div>
         <div className="relative z-10 text-center px-6">
           <h1 className="text-5xl md:text-6xl font-bold mb-4">
-            Explore <span className="text-yellow-400">Sri Lanka</span>
+            Explore <span className="text-red-800">Sri Lanka</span>
           </h1>
           <p className="text-lg max-w-2xl mx-auto text-gray-200">
             An island paradise where wild jungles meet endless coastlines, 
@@ -25,7 +25,7 @@ const ReadMoreAbout = () => {
 
       {/* Story Section */}
       <div className="max-w-6xl mx-auto px-6 py-20">
-        <h2 className="text-4xl font-bold text-center mb-10 text-yellow-400">
+        <h2 className="text-4xl font-bold text-center mb-10 text-red-800">
           Our Story
         </h2>
         <p className="text-gray-300 leading-relaxed text-center max-w-3xl mx-auto mb-8">
@@ -62,7 +62,7 @@ const ReadMoreAbout = () => {
                 className="w-full h-56 object-cover"
               />
               <div className="p-6">
-                <h3 className="text-xl font-semibold text-yellow-400 mb-2">
+                <h3 className="text-xl font-semibold text-red-800 mb-2">
                   {card.title}
                 </h3>
                 <p className="text-gray-300 text-sm">{card.text}</p>
@@ -73,7 +73,7 @@ const ReadMoreAbout = () => {
       </div>
 
       {/* Quote Section */}
-      <div className="relative bg-yellow-400 py-20 text-center text-black">
+      <div className="relative bg-white py-20 text-center text-black">
         <h2 className="text-3xl font-bold mb-4">
           "The world is a book, and those who don't travel read only one page"
         </h2>
@@ -82,7 +82,7 @@ const ReadMoreAbout = () => {
 
       {/* Team Section */}
       <div className="max-w-6xl mx-auto px-6 py-20">
-        <h2 className="text-4xl font-bold text-center mb-10 text-yellow-400">
+        <h2 className="text-4xl font-bold text-center mb-10 text-red-800">
           Meet Our Team
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-center">
@@ -116,12 +116,12 @@ const ReadMoreAbout = () => {
           ].map((member, i) => (
             <div
               key={i}
-              className="bg-white/10 p-6 rounded-xl shadow-md hover:bg-yellow-400/10 transition"
+              className="bg-white/10 p-6 rounded-xl shadow-md hover:bg-red-900/10 transition"
             >
               <img
                 src={member.img}
                 alt={member.name}
-                className="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-yellow-400"
+                className="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-red-800"
               />
               <h3 className="text-lg font-semibold">{member.name}</h3>
               <p className="text-gray-400">{member.role}</p>
@@ -140,7 +140,7 @@ const ReadMoreAbout = () => {
         </p>
         <a
           href="/contact"
-          className="bg-yellow-400 text-black px-8 py-3 rounded-full font-semibold hover:bg-yellow-500 transition"
+          className="bg-white text-black px-8 py-3 rounded-full font-semibold hover:bg-red-900 transition"
         >
           Contact Us
         </a>

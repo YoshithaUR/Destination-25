@@ -108,8 +108,8 @@ const GallFort= () => {
             data-aos="fade-up"
             data-aos-delay="400"
           >
-            <div className="flex items-center bg-yellow-500/20 px-4 py-2 rounded-full">
-              <span className="text-yellow-500 mr-2">★</span>
+            <div className="flex items-center bg-white/20 px-4 py-2 rounded-full">
+              <span className="text-red-900 mr-2">★</span>
               <span className="font-bold">{destination.rating}/5.0</span>
             </div>
             <div className="bg-gray-700/50 px-4 py-2 rounded-full">
@@ -127,7 +127,7 @@ const GallFort= () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
             <h2 
-              className="text-4xl font-bold mb-6 text-yellow-500"
+              className="text-4xl font-bold mb-6 text-red-900"
               data-aos="fade-up"
             >
               Discover {destination.name}
@@ -151,7 +151,7 @@ const GallFort= () => {
                   data-aos="fade-up"
                   data-aos-delay={300 + index * 50}
                 >
-                  <div className="w-2 h-2 bg-yellow-500 rounded-full mr-3"></div>
+                  <div className="w-2 h-2 bg-white rounded-full mr-3"></div>
                   <span className="text-gray-300">{fact}</span>
                 </div>
               ))}
@@ -178,7 +178,7 @@ const GallFort= () => {
       >
         <div className="max-w-6xl mx-auto">
           <h2 
-            className="text-4xl font-bold text-center mb-16 text-yellow-500"
+            className="text-4xl font-bold text-center mb-16 text-red-900"
             data-aos="fade-up"
           >
             Why Visit {destination.name}?
@@ -208,7 +208,7 @@ const GallFort= () => {
                     {info.content}
                   </p>
                   <button 
-                    className="mt-4 bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-3 px-6 rounded-lg transition duration-300"
+                    className="mt-4 bg-white hover:bg-yellow-600 text-gray-900 font-bold py-3 px-6 rounded-lg transition duration-300"
                     data-aos="fade-up"
                     data-aos-delay="300"
                   >
@@ -238,7 +238,7 @@ const GallFort= () => {
         data-aos="fade-up"
       >
         <h2 
-          className="text-4xl font-bold text-center mb-16 text-yellow-500"
+          className="text-4xl font-bold text-center mb-16 text-red-900"
           data-aos="fade-up"
         >
           Photo Gallery
@@ -273,7 +273,7 @@ const GallFort= () => {
       >
         <div className="max-w-6xl mx-auto">
           <h2 
-            className="text-4xl font-bold text-center mb-16 text-yellow-500"
+            className="text-4xl font-bold text-center mb-16 text-red-900"
             data-aos="fade-up"
           >
             Activities & Experiences
@@ -282,11 +282,11 @@ const GallFort= () => {
             {destination.activities.map((activity, index) => (
               <div 
                 key={index} 
-                className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 text-center hover:bg-yellow-500/10 transition duration-300 group"
+                className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 text-center hover:bg-red-900/10 transition duration-300 group"
                 data-aos="fade-up"
                 data-aos-delay={index * 100}
               >
-                <div className="w-16 h-16 bg-yellow-500/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-yellow-500 transition duration-300">
+                <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-red-900 transition duration-300">
                   <div className="text-2xl">🌟</div>
                 </div>
                 <h3 className="text-xl font-bold mb-2 text-white">{activity}</h3>
@@ -322,14 +322,14 @@ const GallFort= () => {
             data-aos-delay="200"
           >
             <button 
-              className="bg-black hover:bg-gray-900 text-white font-bold py-4 px-8 rounded-full transition duration-300 transform hover:-translate-y-1"
+              className="bg-black hover:bg-red-900 text-white font-bold py-4 px-8 rounded-full transition duration-300 transform hover:-translate-y-1"
               data-aos="fade-up"
               data-aos-delay="300"
             >
               Book Now
             </button>
             <button 
-              className="bg-white/20 hover:bg-white/30 text-white font-bold py-4 px-8 rounded-full transition duration-300 backdrop-blur-sm"
+              className="bg-white/20 hover:bg-red-900/30 text-white font-bold py-4 px-8 rounded-full transition duration-300 backdrop-blur-sm"
               data-aos="fade-up"
               data-aos-delay="400"
             >

@@ -119,7 +119,7 @@ const Packages = () => {
           className="text-4xl md:text-5xl font-bold text-center mb-6"
           data-aos="fade-down"
         >
-          Our <span className="text-yellow-500">Adventure</span> Packages
+          Our <span className="text-red-900">Adventure</span> Packages
         </h1>
         <p
           className="text-gray-300 text-center max-w-2xl mx-auto mb-16"
@@ -134,7 +134,7 @@ const Packages = () => {
         <div className="flex justify-center mt-20">
           <button
             onClick={handleCreateTrip}
-            className="group relative px-8 py-4 bg-gradient-to-r from-yellow-500 to-orange-500 text-gray-900 font-bold rounded-full text-lg shadow-lg hover:shadow-yellow-500/50 transition-all duration-300 hover:scale-105 flex items-center gap-3"
+            className="group relative px-8 py-4 bg-gradient-to-r from-red-900 to-orange-500 text-gray-900 font-bold rounded-full text-lg shadow-lg hover:shadow-red-900/50 transition-all duration-300 hover:scale-105 flex items-center gap-3"
           >
             <span>Create Your Own Trip</span>
             <svg
@@ -162,7 +162,7 @@ const Packages = () => {
               key={pkg.id}
               className={`bg-gray-800 rounded-2xl overflow-hidden shadow-xl border-2 flex flex-col h-full ${
                 pkg.color === "yellow"
-                  ? "border-yellow-500 shadow-yellow-500/20 hover:border-yellow-400"
+                  ? "border-red-900 shadow-red-900/20 hover:border-red-800"
                   : pkg.color === "blue"
                   ? "border-blue-500 shadow-blue-500/20 hover:border-blue-400"
                   : pkg.color === "green"
@@ -175,7 +175,7 @@ const Packages = () => {
               data-aos-delay={index * 100}
             >
               {pkg.color === "yellow" && (
-                <div className="bg-yellow-500 text-gray-900 text-center py-2 font-bold">
+                <div className="bg-white text-gray-900 text-center py-2 font-bold">
                   MOST POPULAR
                 </div>
               )}
@@ -199,7 +199,7 @@ const Packages = () => {
                 </p>
 
                 <div className="flex justify-between items-center mb-4">
-                  <span className="text-yellow-500 font-bold text-lg">
+                  <span className="text-red-900 font-bold text-lg">
                     {pkg.price}
                   </span>
                   <span className="text-gray-400 text-sm">{pkg.duration}</span>
@@ -211,7 +211,7 @@ const Packages = () => {
                       <svg
                         className={`w-5 h-5 mr-2 flex-shrink-0 mt-0.5 ${
                           pkg.color === "yellow"
-                            ? "text-yellow-500"
+                            ? "text-red-900"
                             : pkg.color === "blue"
                             ? "text-blue-500"
                             : pkg.color === "green"
@@ -240,7 +240,7 @@ const Packages = () => {
                 <button
                   className={`w-full py-3 font-semibold rounded-lg transition-all duration-300 mt-auto ${
                     pkg.color === "yellow"
-                      ? "bg-yellow-500 text-gray-900 hover:bg-yellow-600 hover:text-white hover:shadow-lg"
+                      ? "bg-white text-gray-900 hover:bg-yellow-600 hover:text-white hover:shadow-lg"
                       : pkg.color === "blue"
                       ? "bg-blue-500 text-white hover:bg-blue-600 hover:shadow-lg"
                       : pkg.color === "green"

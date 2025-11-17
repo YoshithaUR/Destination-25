@@ -143,7 +143,7 @@ const Gallery = () => {
       {/* ===== LOGIN/REGISTRATION MODAL ===== */}
       {showAuthModal && (
         <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4">
-          <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-8 max-w-md w-full relative border border-yellow-500/20 shadow-2xl">
+          <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-8 max-w-md w-full relative border border-red-900/20 shadow-2xl">
             {/* Close Button */}
             <button
               onClick={() => setShowAuthModal(false)}
@@ -158,7 +158,7 @@ const Gallery = () => {
                 onClick={() => setIsLogin(true)}
                 className={`px-6 py-2 font-semibold transition-all ${
                   isLogin
-                    ? "text-yellow-400 border-b-2 border-yellow-400"
+                    ? "text-red-800 border-b-2 border-red-800"
                     : "text-gray-400 hover:text-white"
                 }`}
               >
@@ -168,7 +168,7 @@ const Gallery = () => {
                 onClick={() => setIsLogin(false)}
                 className={`px-6 py-2 font-semibold transition-all ${
                   !isLogin
-                    ? "text-yellow-400 border-b-2 border-yellow-400"
+                    ? "text-red-800 border-b-2 border-red-800"
                     : "text-gray-400 hover:text-white"
                 }`}
               >
@@ -179,7 +179,7 @@ const Gallery = () => {
             {/* Login Form */}
             {isLogin ? (
               <form onSubmit={handleLogin} className="space-y-4">
-                <h2 className="text-2xl font-bold text-center mb-6 text-yellow-400">
+                <h2 className="text-2xl font-bold text-center mb-6 text-red-800">
                   Welcome Back!
                 </h2>
                 
@@ -191,7 +191,7 @@ const Gallery = () => {
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-yellow-400 text-white"
+                    className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-red-800 text-white"
                     placeholder="your@email.com"
                   />
                 </div>
@@ -204,14 +204,14 @@ const Gallery = () => {
                     value={formData.password}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-yellow-400 text-white"
+                    className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-red-800 text-white"
                     placeholder="••••••••"
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-3 rounded-lg transition-all duration-300 transform hover:-translate-y-1"
+                  className="w-full bg-white hover:bg-red-900 text-black font-bold py-3 rounded-lg transition-all duration-300 transform hover:-translate-y-1"
                 >
                   Login
                 </button>
@@ -219,7 +219,7 @@ const Gallery = () => {
             ) : (
               /* Registration Form */
               <form onSubmit={handleRegister} className="space-y-4">
-                <h2 className="text-2xl font-bold text-center mb-6 text-yellow-400">
+                <h2 className="text-2xl font-bold text-center mb-6 text-red-800">
                   Create Account
                 </h2>
                 
@@ -231,7 +231,7 @@ const Gallery = () => {
                     value={formData.name}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-yellow-400 text-white"
+                    className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-red-800 text-white"
                     placeholder="John Doe"
                   />
                 </div>
@@ -244,7 +244,7 @@ const Gallery = () => {
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-yellow-400 text-white"
+                    className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-red-800 text-white"
                     placeholder="your@email.com"
                   />
                 </div>
@@ -257,7 +257,7 @@ const Gallery = () => {
                     value={formData.password}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-yellow-400 text-white"
+                    className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-red-800 text-white"
                     placeholder="••••••••"
                   />
                 </div>
@@ -270,14 +270,14 @@ const Gallery = () => {
                     value={formData.confirmPassword}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-yellow-400 text-white"
+                    className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-red-800 text-white"
                     placeholder="••••••••"
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-3 rounded-lg transition-all duration-300 transform hover:-translate-y-1"
+                  className="w-full bg-white hover:bg-red-900 text-black font-bold py-3 rounded-lg transition-all duration-300 transform hover:-translate-y-1"
                 >
                   Register
                 </button>
@@ -290,7 +290,7 @@ const Gallery = () => {
       {/* ===== VIDEOS SECTION ===== */}
       <div className="relative flex flex-col items-center justify-center min-h-screen overflow-hidden">
         <h1
-          className="text-5xl md:text-6xl font-bold text-yellow-400 mb-10 tracking-wider"
+          className="text-5xl md:text-6xl font-bold text-red-800 mb-10 tracking-wider"
           data-aos="fade-down"
         >
           TRAVEL
@@ -346,7 +346,7 @@ const Gallery = () => {
         className="relative min-h-screen bg-gradient-to-br from-black via-gray-900 to-black flex flex-col items-center py-12 px-6 overflow-hidden"
       >
         <div className="relative z-10 max-w-6xl mx-auto px-6 text-center text-white">
-          <h1 className="text-5xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-orange-500 to-yellow-300 animate-pulse tracking-wider drop-shadow-[0_0_15px_rgba(255,255,100,0.3)]">
+          <h1 className="text-5xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-red-800 via-orange-500 to-yellow-300 animate-pulse tracking-wider drop-shadow-[0_0_15px_rgba(255,255,100,0.3)]">
             Travel Gallery
           </h1>
           <p 
@@ -361,7 +361,7 @@ const Gallery = () => {
           {isLoggedIn && (
             <button
               onClick={handleLogout}
-              className="mb-4 text-sm text-gray-400 hover:text-yellow-400 transition"
+              className="mb-4 text-sm text-gray-400 hover:text-red-800 transition"
             >
               Logout
             </button>
@@ -369,7 +369,7 @@ const Gallery = () => {
 
           {/* Upload Button */}
           {isLoggedIn ? (
-            <label className="bg-yellow-400 text-black px-6 py-3 rounded-full font-semibold cursor-pointer hover:bg-yellow-500 transition mb-10 inline-block">
+            <label className="bg-white text-black px-6 py-3 rounded-full font-semibold cursor-pointer hover:bg-red-900 transition mb-10 inline-block">
               {uploading ? "Uploading..." : "Upload Your Image"}
               <input
                 type="file"
@@ -381,7 +381,7 @@ const Gallery = () => {
           ) : (
             <button
               onClick={handleUploadClick}
-              className="bg-yellow-400 text-black px-6 py-3 rounded-full font-semibold cursor-pointer hover:bg-yellow-500 transition mb-10 inline-block"
+              className="bg-white text-black px-6 py-3 rounded-full font-semibold cursor-pointer hover:bg-red-900 transition mb-10 inline-block"
             >
               Upload Your Image
             </button>

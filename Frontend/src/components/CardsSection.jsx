@@ -52,7 +52,7 @@ const CardsSection = () => {
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         <h2 className="text-4xl font-bold text-center mb-4 text-white">
-          WHY CHOOSE <span className="text-yellow-500">Ceylon Destination</span>?
+          WHY CHOOSE <span className="text-red-900">Ceylon Destination</span>?
         </h2>
         <p className="text-gray-400 text-center mb-16 max-w-2xl mx-auto">
           We offer unforgettable experiences with our expertly crafted adventure packages.
@@ -64,7 +64,7 @@ const CardsSection = () => {
               key={card.id}
               onMouseEnter={() => setHoveredImage(card.image)}
               onMouseLeave={() => setHoveredImage(null)}
-              className="group relative h-80 rounded-2xl overflow-hidden shadow-2xl cursor-pointer transform transition-all duration-500 hover:-translate-y-3 hover:shadow-yellow-500/50"
+              className="group relative h-80 rounded-2xl overflow-hidden shadow-2xl cursor-pointer transform transition-all duration-500 hover:-translate-y-3 hover:shadow-red-900/50"
               style={{
                 animationDelay: `${card.delay}ms`
               }}
@@ -81,7 +81,7 @@ const CardsSection = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent group-hover:bg-blue-900 transition-all duration-500"></div>
               
               {/* Animated Border Effect */}
-              <div className="absolute inset-0 border-2 border-transparent group-hover:border-yellow-500 rounded-2xl transition-all duration-500"></div>
+              <div className="absolute inset-0 border-2 border-transparent group-hover:border-red-900 rounded-2xl transition-all duration-500"></div>
               
               {/* Shine Effect on Hover */}
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
@@ -101,13 +101,13 @@ const CardsSection = () => {
                 </p>
                 
                 {/* Call-to-Action Button - Appears on Hover */}
-                <button className="mt-2 px-4 py-2 bg-yellow-500 text-black font-semibold rounded-lg opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 hover:bg-yellow-400">
+                <button className="mt-2 px-4 py-2 bg-white text-black font-semibold rounded-lg opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 hover:bg-red-900">
                   Explore Now →
                 </button>
               </div>
               
               {/* Corner Accent - Decorative Element */}
-              <div className="absolute top-0 left-0 w-0 h-0 border-t-[40px] border-t-yellow-500/0 border-r-[40px] border-r-transparent group-hover:border-t-yellow-500/80 transition-all duration-500"></div>
+              <div className="absolute top-0 left-0 w-0 h-0 border-t-[40px] border-t-red-900/0 border-r-[40px] border-r-transparent group-hover:border-t-red-900/80 transition-all duration-500"></div>
             </div>
           ))}
         </div>

@@ -160,7 +160,7 @@ const Hero = () => {
           <motion.button
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
-            className="mt-6 bg-yellow-400 text-black px-6 py-3 rounded-full font-semibold hover:bg-yellow-500 transition"
+            className="mt-6 bg-white text-black px-6 py-3 rounded-full font-semibold hover:bg-red-900 transition"
           >
             EXPLORE MORE
           </motion.button>
@@ -172,7 +172,7 @@ const Hero = () => {
         <motion.button
           whileHover={{ scale: 1.1 }}
           onClick={prevSlide}
-          className="p-3 bg-white/20 rounded-full hover:bg-yellow-400 transition-colors duration-300"
+          className="p-3 bg-white/20 rounded-full hover:bg-red-900 transition-colors duration-300"
         >
           <ChevronLeft size={24} />
         </motion.button>
@@ -194,7 +194,7 @@ const Hero = () => {
                 alt={`Slide ${slides[currentSlide].id}`}
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 border-2 border-yellow-400 rounded-2xl pointer-events-none" />
+              <div className="absolute inset-0 border-2 border-red-800 rounded-2xl pointer-events-none" />
             </motion.div>
           </AnimatePresence>
         </div>
@@ -202,7 +202,7 @@ const Hero = () => {
         <motion.button
           whileHover={{ scale: 1.1 }}
           onClick={nextSlide}
-          className="p-3 bg-white/20 rounded-full hover:bg-yellow-400 transition-colors duration-300"
+          className="p-3 bg-white/20 rounded-full hover:bg-red-900 transition-colors duration-300"
         >
           <ChevronRight size={24} />
         </motion.button>

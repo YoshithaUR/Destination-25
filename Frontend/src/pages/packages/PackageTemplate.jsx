@@ -316,12 +316,12 @@ const PackageTemplate = () => {
   const getColorClasses = (type) => {
     switch (packageData.color) {
       case 'yellow':
-        return type === 'rating' ? 'bg-yellow-500/20 text-yellow-500' :
-               type === 'price' ? 'bg-yellow-500/20 text-yellow-500' :
-               type === 'heading' ? 'text-yellow-500' :
-               type === 'fact' ? 'bg-yellow-500 rounded-full' :
+        return type === 'rating' ? 'bg-white/20 text-red-900' :
+               type === 'price' ? 'bg-white/20 text-red-900' :
+               type === 'heading' ? 'text-red-900' :
+               type === 'fact' ? 'bg-white rounded-full' :
                type === 'cta' ? 'from-yellow-600 to-yellow-800' :
-               type === 'button' ? 'bg-yellow-500 hover:bg-yellow-600 text-gray-900' :
+               type === 'button' ? 'bg-white hover:bg-yellow-600 text-gray-900' :
                'bg-gray-800/50';
       case 'blue':
         return type === 'rating' ? 'bg-blue-500/20 text-blue-400' :
@@ -462,11 +462,11 @@ const PackageTemplate = () => {
             </ul>
           </div>
           <div className="bg-gray-800/50 rounded-2xl p-8">
-            <h3 className="text-2xl font-bold mb-6 text-red-400">What's Not Included</h3>
+            <h3 className="text-2xl font-bold mb-6 text-red-800">What's Not Included</h3>
             <ul className="space-y-3">
               {packageData.exclusions.map((item, index) => (
                 <li key={index} className="flex items-start">
-                  <svg className="w-5 h-5 text-red-400 mr-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <svg className="w-5 h-5 text-red-800 mr-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
                   </svg>
                   <span className="text-gray-300">{item}</span>
@@ -509,7 +509,7 @@ const PackageTemplate = () => {
             <button className={`font-bold py-4 px-8 rounded-full transition duration-300 transform hover:-translate-y-1 ${getColorClasses('button')}`}>
               Book Now - {packageData.price}
             </button>
-            <button className="bg-white/20 hover:bg-white/30 text-white font-bold py-4 px-8 rounded-full transition duration-300 backdrop-blur-sm">
+            <button className="bg-white/20 hover:bg-red-900/30 text-white font-bold py-4 px-8 rounded-full transition duration-300 backdrop-blur-sm">
               Contact Us
             </button>
           </div>

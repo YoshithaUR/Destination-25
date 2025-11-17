@@ -81,8 +81,8 @@ const SilverAdventure = () => {
             <div className="bg-gray-700/50 px-4 py-2 rounded-full">
               <span>{packageData.duration}</span>
             </div>
-            <div className="bg-yellow-500/20 px-4 py-2 rounded-full">
-              <span className="text-yellow-500 font-bold">{packageData.price}</span>
+            <div className="bg-white/20 px-4 py-2 rounded-full">
+              <span className="text-red-900 font-bold">{packageData.price}</span>
             </div>
           </div>
         </div>
@@ -163,11 +163,11 @@ const SilverAdventure = () => {
             </ul>
           </div>
           <div className="bg-gray-800/50 rounded-2xl p-8">
-            <h3 className="text-2xl font-bold mb-6 text-red-400">What's Not Included</h3>
+            <h3 className="text-2xl font-bold mb-6 text-red-800">What's Not Included</h3>
             <ul className="space-y-3">
               {packageData.exclusions.map((item, index) => (
                 <li key={index} className="flex items-start">
-                  <svg className="w-5 h-5 text-red-400 mr-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <svg className="w-5 h-5 text-red-800 mr-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
                   </svg>
                   <span className="text-gray-300">{item}</span>
@@ -207,10 +207,10 @@ const SilverAdventure = () => {
             Book your {packageData.name} package with Smile Sri Lanka and experience the magic of Sri Lanka.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <button className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-4 px-8 rounded-full transition duration-300 transform hover:-translate-y-1">
+            <button className="bg-white hover:bg-yellow-600 text-gray-900 font-bold py-4 px-8 rounded-full transition duration-300 transform hover:-translate-y-1">
               Book Now - {packageData.price}
             </button>
-            <button className="bg-white/20 hover:bg-white/30 text-white font-bold py-4 px-8 rounded-full transition duration-300 backdrop-blur-sm">
+            <button className="bg-white/20 hover:bg-red-900/30 text-white font-bold py-4 px-8 rounded-full transition duration-300 backdrop-blur-sm">
               Contact Us
             </button>
           </div>
