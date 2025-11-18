@@ -336,12 +336,21 @@ const CustomTripPlanner = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 py-12 px-4">
+    <div className="min-h-screen bg-gray-900 py-12 px-4 pt-15">
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-4xl font-bold text-gray-100 mb-2 text-center">
+        
+        <h1 className="text-4xl font-bold text-gray-100 mb-2 text-center pt-20">
           Create Your <span className="text-blue-400">Dream Trip</span>
         </h1>
-        <p className="text-gray-600 text-center mb-10">Design your perfect Sri Lankan adventure</p>
+         <button
+    onClick={() => navigate(-1)}
+   className="absolute left-12 px-4 py-2 text-sm font-semibold bg-white/10 border border-white/20 
+rounded-lg text-white hover:bg-white/20 transition-all backdrop-blur-md"
+
+  >
+    ← Back
+  </button>
+        <p className="text-gray-600 text-center mb-10 pt-4">Design your perfect Sri Lankan adventure</p>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Left Section - Form Inputs */}
