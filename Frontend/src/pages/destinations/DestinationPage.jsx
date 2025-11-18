@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Navbar from "../../components/Navbar";
 import { useNavigate } from "react-router-dom";
@@ -6,6 +6,11 @@ import { useNavigate } from "react-router-dom";
 const DestinationPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+
+  // Scroll to top when destination changes
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [id]);
 
   // In a real app, this data would come from an API or context
   const destinations = {

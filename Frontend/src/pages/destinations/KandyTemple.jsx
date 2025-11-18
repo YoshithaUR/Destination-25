@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "../../components/Navbar";
 import { useNavigate } from "react-router-dom";
 
 const KandyTeample= () => {
   const navigate = useNavigate();
+
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   
   // Destination details
   const destination = {
