@@ -110,8 +110,8 @@ const Navbar = () => {
         }`}
       >
        <div className="logo-section flex items-center gap-2">
-  <img src="/logo.png" alt="Smile Lanka Logo" className="logo-img" />
-  <h1 className="text-white font-bold text-xl tracking-wider">Smile Lanka</h1>
+  <img src="/PNG (2).png" alt="Smile Lanka Logo" className="logo-img" />
+  <h1 className="text-white font-bold text-xl tracking-wider">Ceylon Destinations</h1>
 </div>
 
 

@@ -2,70 +2,70 @@ import React from "react";
 import Navbar from "../../components/Navbar";
 import { useNavigate } from "react-router-dom";
 
-const Horton= () => {
+const Horton = () => {
   const navigate = useNavigate();
-  
+
   // Destination details
   const destination = {
     id: 11,
-  name: "Horton Plains",
-  description:
-    "A stunning highland plateau known for its breathtaking landscapes, diverse wildlife, and the famous World's End cliff.",
-  longDescription:
-    "Horton Plains National Park, located in the Central Highlands of Sri Lanka, is one of the island’s most beautiful and ecologically rich natural reserves. Recognized as a UNESCO World Heritage Site, the park sits at an elevation of over 2,100 meters and features rolling grasslands, cloud forests, and sparkling streams. It is home to a variety of endemic flora and fauna, including the Sri Lankan sambar deer and several unique bird species. The park’s most iconic attraction, World's End, offers a dramatic 870-meter drop with breathtaking panoramic views of the southern plains. Visitors can also explore Baker’s Falls, a picturesque waterfall nestled within the park. With its cool climate, misty landscapes, and natural wonders, Horton Plains is a must-visit destination for nature lovers and hikers alike.",
+    name: "Horton Plains",
+    description:
+      "A stunning highland plateau known for its breathtaking landscapes, diverse wildlife, and the famous World's End cliff.",
+    longDescription:
+      "Horton Plains National Park, located in the Central Highlands of Sri Lanka, is one of the island’s most beautiful and ecologically rich natural reserves. Recognized as a UNESCO World Heritage Site, the park sits at an elevation of over 2,100 meters and features rolling grasslands, cloud forests, and sparkling streams. It is home to a variety of endemic flora and fauna, including the Sri Lankan sambar deer and several unique bird species. The park’s most iconic attraction, World's End, offers a dramatic 870-meter drop with breathtaking panoramic views of the southern plains. Visitors can also explore Baker’s Falls, a picturesque waterfall nestled within the park. With its cool climate, misty landscapes, and natural wonders, Horton Plains is a must-visit destination for nature lovers and hikers alike.",
 
-  detailedInfo: [
-    {
-      title: "World’s End Viewpoint",
-      content:
-        "The main highlight of Horton Plains, World's End, is a sheer cliff with an 870-meter drop offering stunning views of the southern plains. On clear mornings, visitors can even see the distant Indian Ocean. The nearby Mini World’s End provides another scenic vantage point within a shorter walk.",
-      image:
-        "https://images.unsplash.com/photo-1611579423181-264fd8b7cb7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
-    },
-    {
-      title: "Baker’s Falls and Natural Beauty",
-      content:
-        "Baker’s Falls, named after the British explorer Sir Samuel Baker, is one of the most photographed spots in Horton Plains. Surrounded by lush greenery and misty air, this picturesque waterfall adds to the park’s enchanting atmosphere and is accessible via the main hiking trail.",
-      image:
-        "https://images.unsplash.com/photo-1586430406052-92b2292f2375?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
-    },
-    {
-      title: "Biodiversity and Unique Ecosystem",
-      content:
-        "Horton Plains is home to diverse ecosystems, including montane grasslands and cloud forests that support many endemic species. The Sri Lankan sambar deer, purple-faced langur, and various rare birds like the Sri Lanka whistling thrush thrive in this protected environment.",
-      image:
-        "https://images.unsplash.com/photo-1588092612598-047c78a4d7e9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
-    },
-  ],
+    detailedInfo: [
+      {
+        title: "World’s End Viewpoint",
+        content:
+          "The main highlight of Horton Plains, World's End, is a sheer cliff with an 870-meter drop offering stunning views of the southern plains. On clear mornings, visitors can even see the distant Indian Ocean. The nearby Mini World’s End provides another scenic vantage point within a shorter walk.",
+        image:
+          "https://images.unsplash.com/photo-1611579423181-264fd8b7cb7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+      },
+      {
+        title: "Baker’s Falls and Natural Beauty",
+        content:
+          "Baker’s Falls, named after the British explorer Sir Samuel Baker, is one of the most photographed spots in Horton Plains. Surrounded by lush greenery and misty air, this picturesque waterfall adds to the park’s enchanting atmosphere and is accessible via the main hiking trail.",
+        image:
+          "https://images.unsplash.com/photo-1586430406052-92b2292f2375?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+      },
+      {
+        title: "Biodiversity and Unique Ecosystem",
+        content:
+          "Horton Plains is home to diverse ecosystems, including montane grasslands and cloud forests that support many endemic species. The Sri Lankan sambar deer, purple-faced langur, and various rare birds like the Sri Lanka whistling thrush thrive in this protected environment.",
+        image:
+          "https://images.unsplash.com/photo-1588092612598-047c78a4d7e9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+      },
+    ],
 
-  image:
-    "https://images.unsplash.com/photo-1611579423181-264fd8b7cb7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+    image:
+      "https://i.pinimg.com/736x/28/de/9f/28de9f2b3257e65f9eaf62d42597606b.jpg",
 
-  gallery: [
-    "https://images.unsplash.com/photo-1611579423181-264fd8b7cb7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
-    "https://images.unsplash.com/photo-1586430406052-92b2292f2375?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
-    "https://images.unsplash.com/photo-1588092612598-047c78a4d7e9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
-    "https://images.unsplash.com/photo-1586424533453-42ecb8c5c518?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
-  ],
+    gallery: [
+      "https://images.unsplash.com/photo-1611579423181-264fd8b7cb7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+      "https://images.unsplash.com/photo-1586430406052-92b2292f2375?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+      "https://images.unsplash.com/photo-1588092612598-047c78a4d7e9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+      "https://images.unsplash.com/photo-1586424533453-42ecb8c5c518?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+    ],
 
-  rating: 4.9,
-  location: "Central Highlands, Nuwara Eliya District, Sri Lanka",
-  bestTime: "January to March (clear skies and best visibility)",
-  activities: [
-    "Hiking to World’s End",
-    "Visiting Baker’s Falls",
-    "Wildlife and Bird Watching",
-    "Nature Photography",
-    "Exploring Montane Forest Trails",
-  ],
-  facts: [
-    "UNESCO World Heritage Site since 2010",
-    "Home to the famous World’s End viewpoint",
-    "Elevation around 2,100–2,300 meters above sea level",
-    "Source of major rivers like the Mahaweli, Kelani, and Walawe",
-    "Habitat for many endemic species of flora and fauna",
-  ],
-}
+    rating: 4.9,
+    location: "Central Highlands, Nuwara Eliya District, Sri Lanka",
+    bestTime: "January to March (clear skies and best visibility)",
+    activities: [
+      "Hiking to World’s End",
+      "Visiting Baker’s Falls",
+      "Wildlife and Bird Watching",
+      "Nature Photography",
+      "Exploring Montane Forest Trails",
+    ],
+    facts: [
+      "UNESCO World Heritage Site since 2010",
+      "Home to the famous World’s End viewpoint",
+      "Elevation around 2,100–2,300 meters above sea level",
+      "Source of major rivers like the Mahaweli, Kelani, and Walawe",
+      "Habitat for many endemic species of flora and fauna",
+    ],
+  }
 
 
   return (
@@ -76,11 +76,11 @@ const Horton= () => {
       </div>
 
       {/* Hero Section */}
-      <section 
+      <section
         className="relative h-[600px] flex items-center justify-center"
         data-aos="fade-in"
       >
-        <div 
+        <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
             backgroundImage: `url('${destination.image}')`
@@ -88,20 +88,20 @@ const Horton= () => {
         />
         <div className="absolute inset-0 bg-black/70"></div>
         <div className="relative z-10 text-center px-6 max-w-4xl">
-          <h1 
+          <h1
             className="text-5xl md:text-7xl font-bold mb-6"
             data-aos="fade-down"
           >
             {destination.name}
           </h1>
-          <p 
+          <p
             className="text-2xl text-gray-300 max-w-3xl mx-auto mb-8"
             data-aos="fade-up"
             data-aos-delay="200"
           >
             {destination.description}
           </p>
-          <div 
+          <div
             className="flex justify-center items-center space-x-4"
             data-aos="fade-up"
             data-aos-delay="400"
@@ -118,33 +118,33 @@ const Horton= () => {
       </section>
 
       {/* Overview Section */}
-      <section 
+      <section
         className="py-16 px-6 max-w-6xl mx-auto"
         data-aos="fade-up"
       >
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
-            <h2 
+            <h2
               className="text-4xl font-bold mb-6 text-yellow-500"
               data-aos="fade-up"
             >
               Discover {destination.name}
             </h2>
-            <p 
+            <p
               className="text-gray-300 text-lg mb-8 leading-relaxed"
               data-aos="fade-up"
               data-aos-delay="100"
             >
               {destination.longDescription}
             </p>
-            <div 
+            <div
               className="grid grid-cols-2 gap-4"
               data-aos="fade-up"
               data-aos-delay="200"
             >
               {destination.facts.map((fact, index) => (
-                <div 
-                  key={index} 
+                <div
+                  key={index}
                   className="flex items-center bg-gray-800/50 p-3 rounded-lg"
                   data-aos="fade-up"
                   data-aos-delay={300 + index * 50}
@@ -155,13 +155,13 @@ const Horton= () => {
               ))}
             </div>
           </div>
-          <div 
+          <div
             className="rounded-2xl overflow-hidden shadow-2xl"
             data-aos="fade-left"
             data-aos-delay="200"
           >
-            <img 
-              src={destination.image} 
+            <img
+              src={destination.image}
               alt={destination.name}
               className="w-full h-full object-cover"
             />
@@ -170,42 +170,42 @@ const Horton= () => {
       </section>
 
       {/* Detailed Sections */}
-      <section 
+      <section
         className="py-16 px-6 bg-gray-900/50"
         data-aos="fade-up"
       >
         <div className="max-w-6xl mx-auto">
-          <h2 
+          <h2
             className="text-4xl font-bold text-center mb-16 text-yellow-500"
             data-aos="fade-up"
           >
             Why Visit {destination.name}?
           </h2>
-          
+
           <div className="space-y-20">
             {destination.detailedInfo.map((info, index) => (
-              <div 
-                key={index} 
+              <div
+                key={index}
                 className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''}`}
                 data-aos="fade-up"
                 data-aos-delay={index * 100}
               >
                 <div className={`${index % 2 === 1 ? 'lg:col-start-2' : ''}`}>
-                  <h3 
+                  <h3
                     className="text-3xl font-bold mb-6 text-white"
                     data-aos="fade-up"
                     data-aos-delay="100"
                   >
                     {info.title}
                   </h3>
-                  <p 
+                  <p
                     className="text-gray-300 text-lg mb-6 leading-relaxed"
                     data-aos="fade-up"
                     data-aos-delay="200"
                   >
                     {info.content}
                   </p>
-                  <button 
+                  <button
                     className="mt-4 bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-3 px-6 rounded-lg transition duration-300"
                     data-aos="fade-up"
                     data-aos-delay="300"
@@ -213,13 +213,13 @@ const Horton= () => {
                     Learn More
                   </button>
                 </div>
-                <div 
+                <div
                   className={`rounded-2xl overflow-hidden shadow-2xl ${index % 2 === 1 ? 'lg:col-start-1' : ''}`}
                   data-aos="fade-up"
                   data-aos-delay="200"
                 >
-                  <img 
-                    src={info.image} 
+                  <img
+                    src={info.image}
                     alt={info.title}
                     className="w-full h-96 object-cover"
                   />
@@ -231,11 +231,11 @@ const Horton= () => {
       </section>
 
       {/* Gallery Section */}
-      <section 
+      <section
         className="py-16 px-6 max-w-6xl mx-auto"
         data-aos="fade-up"
       >
-        <h2 
+        <h2
           className="text-4xl font-bold text-center mb-16 text-yellow-500"
           data-aos="fade-up"
         >
@@ -243,15 +243,15 @@ const Horton= () => {
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {destination.gallery.map((img, index) => (
-            <div 
-              key={index} 
+            <div
+              key={index}
               className="rounded-xl overflow-hidden shadow-lg group"
               data-aos="fade-up"
               data-aos-delay={index * 100}
             >
               <div className="relative h-64">
-                <img 
-                  src={img} 
+                <img
+                  src={img}
                   alt={`${destination.name} ${index + 1}`}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
@@ -265,12 +265,12 @@ const Horton= () => {
       </section>
 
       {/* Activities Section */}
-      <section 
+      <section
         className="py-16 px-6 bg-gray-900/50"
         data-aos="fade-up"
       >
         <div className="max-w-6xl mx-auto">
-          <h2 
+          <h2
             className="text-4xl font-bold text-center mb-16 text-yellow-500"
             data-aos="fade-up"
           >
@@ -278,8 +278,8 @@ const Horton= () => {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {destination.activities.map((activity, index) => (
-              <div 
-                key={index} 
+              <div
+                key={index}
                 className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 text-center hover:bg-yellow-500/10 transition duration-300 group"
                 data-aos="fade-up"
                 data-aos-delay={index * 100}
@@ -296,37 +296,37 @@ const Horton= () => {
       </section>
 
       {/* Booking CTA */}
-      <section 
+      <section
         className="py-20 px-6"
         data-aos="fade-up"
       >
         <div className="max-w-4xl mx-auto text-center bg-gradient-to-r from-yellow-600 to-yellow-800 rounded-3xl p-12">
-          <h2 
+          <h2
             className="text-4xl font-bold mb-6"
             data-aos="fade-up"
           >
             Ready for Your Adventure?
           </h2>
-          <p 
+          <p
             className="text-xl mb-8 max-w-2xl mx-auto"
             data-aos="fade-up"
             data-aos-delay="100"
           >
             Book your trip to {destination.name} with Smile Sri Lanka and experience the magic of this incredible destination.
           </p>
-          <div 
+          <div
             className="flex flex-col sm:flex-row justify-center gap-4"
             data-aos="fade-up"
             data-aos-delay="200"
           >
-            <button 
+            <button
               className="bg-black hover:bg-gray-900 text-white font-bold py-4 px-8 rounded-full transition duration-300 transform hover:-translate-y-1"
               data-aos="fade-up"
               data-aos-delay="300"
             >
               Book Now
             </button>
-            <button 
+            <button
               className="bg-white/20 hover:bg-white/30 text-white font-bold py-4 px-8 rounded-full transition duration-300 backdrop-blur-sm"
               data-aos="fade-up"
               data-aos-delay="400"
