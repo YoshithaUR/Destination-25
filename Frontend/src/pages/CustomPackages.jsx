@@ -215,18 +215,31 @@ const CustomTripPlanner = () => {
     const vehicleCost = selectedVehicle.costPerDay * tripDuration;
     const destinationCost = selectedDestinations.reduce((sum, d) => sum + d.cost, 0);
     
-    // Calculate hotel costs based on selected hotels for each destination
-    let hotelCost = 0;
-    selectedDestinations.forEach(dest => {
-      const hotel = destinationHotels[dest.id];
-      if (hotel) {
-        hotelCost += hotel.price * Math.ceil(travelers / 2);
-      }
-    });
+    // --- FIX: Hotel Cost Calculation ---
+    // The original logic incorrectly summed the hotel cost once per destination, ignoring the number of nights.
+    // A proper fix requires complex night-stay allocation, which is beyond the scope of a simple fix.
+    // Pragmatic Fix: Calculate the average daily hotel cost across all selected destinations and multiply by tripDuration.
     
-    const totalCost = vehicleCost + destinationCost + hotelCost;
+    let totalDailyHotelCost = 0;
+    const roomsNeeded = Math.ceil(travelers / 2);
     
-    return { vehicleCost, destinationCost, hotelCost, totalCost };
+    if (selectedDestinations.length > 0) {
+      // 1. Sum the daily cost of the selected hotel for each destination (cost for all rooms)
+      const sumOfDestinationHotelCosts = selectedDestinations.reduce((sum, dest) => {
+        const hotel = destinationHotels[dest.id];
+        return sum + (hotel ? hotel.price * roomsNeeded : 0);
+      }, 0);
+      
+      // 2. Calculate the average daily hotel cost
+      totalDailyHotelCost = sumOfDestinationHotelCosts / selectedDestinations.length;
+    }
+    
+    // 3. Total hotel cost is the average daily cost multiplied by the trip duration (nights)
+    const totalHotelCost = totalDailyHotelCost * tripDuration;
+    
+    const totalCost = vehicleCost + destinationCost + totalHotelCost;
+    
+    return { vehicleCost, destinationCost, hotelCost: totalHotelCost, totalCost };
   };
 
   const costs = calculateCosts();
@@ -235,7 +248,7 @@ const CustomTripPlanner = () => {
     if (!startDate) return [];
     
     const daysArray = [];
-    const HOURS_PER_DAY = 24;
+    const HOURS_PER_DAY = 10; // Realistic active hours for sightseeing/travel
     let currentDate = new Date(startDate);
     let remainingHoursInDay = HOURS_PER_DAY;
     let currentDayDestinations = [];
@@ -277,10 +290,8 @@ const CustomTripPlanner = () => {
       }
     });
     
-    // Update trip duration based on calculated days
-    if (daysArray.length > 0 && daysArray.length !== tripDuration) {
-      setTripDuration(daysArray.length);
-    }
+    // Note: We avoid mutating tripDuration here as it's called during render.
+    // The user-set duration is used for cost calculation, and the itinerary length is displayed.
     
     return daysArray;
   };
@@ -325,26 +336,35 @@ const CustomTripPlanner = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 py-12 px-4">
+    <div className="min-h-screen bg-gray-900 py-12 px-4 pt-15">
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-4xl font-bold text-gray-800 mb-2 text-center">
-          Create Your <span className="text-blue-600">Dream Trip</span>
+        
+        <h1 className="text-4xl font-bold text-gray-100 mb-2 text-center pt-20">
+          Create Your <span className="text-blue-400">Dream Trip</span>
         </h1>
-        <p className="text-gray-600 text-center mb-10">Design your perfect Sri Lankan adventure</p>
+         <button
+    onClick={() => navigate(-1)}
+   className="absolute left-12 px-4 py-2 text-sm font-semibold bg-white/10 border border-white/20 
+rounded-lg text-white hover:bg-white/20 transition-all backdrop-blur-md"
+
+  >
+    ← Back
+  </button>
+        <p className="text-gray-600 text-center mb-10 pt-4">Design your perfect Sri Lankan adventure</p>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Left Section - Form Inputs */}
           <div className="lg:col-span-2 space-y-6">
             {/* Basic Details Card */}
-            <div className="bg-white rounded-2xl shadow-lg p-6">
-              <h2 className="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
-                <Calendar className="text-blue-600" size={24} />
+            <div className="bg-gray-800 rounded-2xl shadow-lg p-6">
+              <h2 className="text-xl font-bold text-gray-100 mb-4 flex items-center gap-2">
+                <Calendar className="text-blue-400" size={24} />
                 Trip Details
               </h2>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  <label className="block text-sm font-semibold text-gray-300 mb-2">
                     Trip Starting Date
                   </label>
                   <input
@@ -352,12 +372,13 @@ const CustomTripPlanner = () => {
                     value={startDate}
                     min={getTodayDate()}
                     onChange={(e) => setStartDate(e.target.value)}
-                    className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-blue-500 focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 rounded-lg border-2 border-gray-700 text-black focus:border-blue-400 focus:outline-none transition-colors"
+
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  <label className="block text-sm font-semibold text-gray-300 mb-2">
                     Trip Duration (days)
                   </label>
                   <input
@@ -366,14 +387,15 @@ const CustomTripPlanner = () => {
                     max="30"
                     value={tripDuration}
                     onChange={(e) => setTripDuration(Number(e.target.value))}
-                    className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-blue-500 focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 rounded-lg border-2 border-gray-700 text-black focus:border-blue-400 focus:outline-none transition-colors"
+
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  <label className="block text-sm font-semibold text-gray-300 mb-2">
                     Number of Travelers
                   </label>
                   <input
@@ -382,16 +404,17 @@ const CustomTripPlanner = () => {
                     max="20"
                     value={travelers}
                     onChange={(e) => setTravelers(Number(e.target.value))}
-                    className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-blue-500 focus:outline-none transition-colors"
+                   className="w-full px-4 py-3 rounded-lg border-2 border-gray-700 text-black focus:border-blue-400 focus:outline-none transition-colors"
+
                   />
                 </div>
 
                 {startDate && tripDuration && (
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    <label className="block text-sm font-semibold text-gray-300 mb-2">
                       Trip Ending Date
                     </label>
-                    <div className="w-full px-4 py-3 rounded-lg border-2 border-blue-500 bg-blue-50 font-semibold text-gray-800">
+                    <div className="w-full px-4 py-3 rounded-lg border-2 border-blue-400 bg-blue-900/20 font-semibold text-gray-100">
                       {formatDate(calculateEndDate())}
                     </div>
                   </div>
@@ -400,9 +423,9 @@ const CustomTripPlanner = () => {
             </div>
 
             {/* Vehicle Selection */}
-            <div className="bg-white rounded-2xl shadow-lg p-6">
-              <h2 className="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
-                <Car className="text-blue-600" size={24} />
+            <div className="bg-gray-800 rounded-2xl shadow-lg p-6">
+              <h2 className="text-xl font-bold text-gray-100 mb-4 flex items-center gap-2">
+                <Car className="text-blue-400" size={24} />
                 Select Vehicle
               </h2>
               
@@ -413,34 +436,34 @@ const CustomTripPlanner = () => {
                     onClick={() => setSelectedVehicle(vehicle)}
                     className={`p-4 rounded-xl border-2 cursor-pointer transition-all ${
                       selectedVehicle.id === vehicle.id
-                        ? 'border-blue-500 bg-blue-50 shadow-md'
-                        : 'border-gray-200 hover:border-blue-300'
+                        ? 'border-blue-400 bg-blue-900/20 shadow-md'
+                        : 'border-gray-700 hover:border-blue-500'
                     }`}
                   >
                     <div className="flex justify-between items-start">
                       <div>
-                        <h3 className="font-bold text-gray-800">{vehicle.name}</h3>
+                        <h3 className="font-bold text-gray-100">{vehicle.name}</h3>
                         <p className="text-sm text-gray-600">Up to {vehicle.capacity} people</p>
                       </div>
                       {selectedVehicle.id === vehicle.id && (
-                        <Check className="text-blue-600" size={20} />
+                        <Check className="text-blue-400" size={20} />
                       )}
                     </div>
-                    <p className="text-blue-600 font-bold mt-2">Rs {vehicle.costPerDay.toLocaleString()}/day</p>
+                    <p className="text-blue-400 font-bold mt-2">Rs {vehicle.costPerDay.toLocaleString()}/day</p>
                   </div>
                 ))}
               </div>
             </div>
 
             {/* Hotel Selection - Remove this section */}
-            {/* <div className="bg-white rounded-2xl shadow-lg p-6">
+            {/* <div className="bg-gray-800 rounded-2xl shadow-lg p-6">
               ... old hotel selection code ...
             </div> */}
 
             {/* Destinations Selection with Hotels */}
-            <div className="bg-white rounded-2xl shadow-lg p-6">
-              <h2 className="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
-                <MapPin className="text-blue-600" size={24} />
+            <div className="bg-gray-800 rounded-2xl shadow-lg p-6">
+              <h2 className="text-xl font-bold text-gray-100 mb-4 flex items-center gap-2">
+                <MapPin className="text-blue-400" size={24} />
                 Select Destinations & Hotels
               </h2>
               
@@ -456,60 +479,68 @@ const CustomTripPlanner = () => {
                         onClick={() => toggleDestination(dest)}
                         className={`p-4 cursor-pointer transition-all ${
                           isSelected
-                            ? 'bg-green-50 border-green-500'
-                            : 'bg-gray-50 border-gray-200 hover:bg-blue-50'
+                            ? 'bg-green-900/20 border-green-500'
+                            : 'bg-gray-700 border-gray-700 hover:bg-blue-900/20'
                         }`}
                       >
                         <div className="flex justify-between items-start">
                           <div className="flex-1">
-                            <h3 className="font-bold text-gray-800">{dest.name}</h3>
+                            <h3 className="font-bold text-gray-100">{dest.name}</h3>
                             <p className="text-xs text-gray-600">{dest.description}</p>
                             <p className="text-sm text-gray-500 mt-1">
                               Visit time: {dest.avgTime} • Entry: Rs {dest.cost.toLocaleString()}
                             </p>
                           </div>
                           {isSelected && (
-                            <Check className="text-green-600 flex-shrink-0" size={24} />
+                            <Check className="text-green-400 flex-shrink-0" size={24} />
                           )}
                         </div>
                       </div>
 
                       {/* Hotel Selection for Selected Destination */}
                       {isSelected && (
-                        <div className="p-4 bg-white border-t-2">
-                          <h4 className="text-sm font-semibold text-gray-700 mb-3 flex items-center gap-2">
-                            <Hotel size={16} className="text-blue-600" />
+                        <div className="p-4 bg-gray-800 border-t-2 border-gray-700">
+                          <h4 className="text-sm font-semibold text-gray-300 mb-3 flex items-center gap-2">
+                            <Hotel size={16} className="text-blue-400" />
                             Choose Hotel in {dest.name}
                           </h4>
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                             {dest.hotels.map(hotel => (
-                              <div
-                                key={hotel.id}
-                                onClick={() => selectHotelForDestination(dest.id, hotel)}
-                                className={`p-3 rounded-lg border-2 cursor-pointer transition-all ${
-                                  selectedHotel?.id === hotel.id
-                                    ? 'border-blue-500 bg-blue-50'
-                                    : 'border-gray-200 hover:border-blue-300'
-                                }`}
-                              >
-                                <div className="flex justify-between items-start">
-                                  <div className="flex-1">
-                                    <h5 className="font-semibold text-sm text-gray-800">{hotel.name}</h5>
-                                    <div className="flex gap-0.5 mt-1">
-                                      {[...Array(hotel.stars)].map((_, i) => (
-                                        <span key={i} className="text-red-900 text-xs">★</span>
-                                      ))}
-                                    </div>
-                                    <p className="text-blue-600 font-bold text-sm mt-1">
-                                      Rs {hotel.price.toLocaleString()}/night
-                                    </p>
-                                  </div>
-                                  {selectedHotel?.id === hotel.id && (
-                                    <Check className="text-blue-600" size={18} />
-                                  )}
-                                </div>
-                              </div>
-                            ))}
+  <div
+    key={hotel.id}
+    onClick={() => {
+      if (selectedHotel?.id === hotel.id) {
+        // Deselect if already selected
+        selectHotelForDestination(dest.id, null);
+      } else {
+        selectHotelForDestination(dest.id, hotel);
+      }
+    }}
+    className={`p-3 rounded-lg border-2 cursor-pointer transition-all ${
+      selectedHotel?.id === hotel.id
+        ? 'border-blue-400 bg-blue-900/20'
+        : 'border-gray-700 hover:border-blue-500'
+    }`}
+  >
+    <div className="flex justify-between items-start">
+      <div className="flex-1">
+        <h5 className="font-semibold text-sm text-gray-100">{hotel.name}</h5>
+        <div className="flex gap-0.5 mt-1">
+          {[...Array(hotel.stars)].map((_, i) => (
+            <span key={i} className="text-yellow-400 text-xs">★</span>
+          ))}
+        </div>
+        <p className="text-blue-400 font-bold text-sm mt-1">
+          Rs {hotel.price.toLocaleString()}/night
+        </p>
+      </div>
+      {selectedHotel?.id === hotel.id && (
+        <Check className="text-blue-400" size={18} />
+      )}
+    </div>
+  </div>
+))}
+
                           </div>
                         </div>
                       )}
@@ -520,9 +551,9 @@ const CustomTripPlanner = () => {
             </div>
 
             {/* Notes */}
-            <div className="bg-white rounded-2xl shadow-lg p-6">
-              <h2 className="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
-                <FileText className="text-blue-600" size={24} />
+            <div className="bg-gray-800 rounded-2xl shadow-lg p-6">
+              <h2 className="text-xl font-bold text-gray-100 mb-4 flex items-center gap-2">
+                <FileText className="text-blue-400" size={24} />
                 Additional Notes (Optional)
               </h2>
               <textarea
@@ -530,39 +561,39 @@ const CustomTripPlanner = () => {
                 onChange={(e) => setNotes(e.target.value)}
                 placeholder="Any special requests or preferences..."
                 rows="4"
-                className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-blue-500 focus:outline-none transition-colors resize-none"
-              />
+                className="w-full px-4 py-3 rounded-lg border-2 border-gray-700 focus:border-blue-400 focus:outline-none transition-colors resize-none text-black bg-white"
+ />
             </div>
           </div>
 
           {/* Right Section - Summary */}
           <div className="lg:col-span-1 space-y-6">
             {/* Cost Summary */}
-            <div className="bg-white rounded-2xl shadow-lg p-6 sticky top-4">
-              <h2 className="text-xl font-bold text-gray-800 mb-4">Cost Summary</h2>
+            <div className="bg-gray-800 rounded-2xl shadow-lg p-6 sticky top-4">
+              <h2 className="text-xl font-bold text-gray-100 mb-4">Cost Summary</h2>
               
               <div className="space-y-3 mb-4">
-                <div className="flex justify-between text-gray-700">
+                <div className="flex justify-between text-gray-300">
                   <span>Vehicle</span>
                   <span className="font-semibold">Rs {costs.vehicleCost.toLocaleString()}</span>
                 </div>
-                <div className="flex justify-between text-gray-700">
+                <div className="flex justify-between text-gray-300">
                   <span>Destinations</span>
                   <span className="font-semibold">Rs {costs.destinationCost.toLocaleString()}</span>
                 </div>
-                <div className="flex justify-between text-gray-700">
+                <div className="flex justify-between text-gray-300">
                   <span>Hotel</span>
                   <span className="font-semibold">Rs {costs.hotelCost.toLocaleString()}</span>
                 </div>
-                <div className="border-t-2 pt-3 flex justify-between text-lg font-bold text-gray-900">
+                <div className="border-t-2 border-gray-700 pt-3 flex justify-between text-lg font-bold text-gray-100">
                   <span>Total Estimated Cost</span>
-                  <span className="text-blue-600">Rs {costs.totalCost.toLocaleString()}</span>
+                  <span className="text-blue-400">Rs {costs.totalCost.toLocaleString()}</span>
                 </div>
               </div>
 
               <button
                 onClick={handleSaveTrip}
-                className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 rounded-xl font-bold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl"
+                className="w-full bg-gradient-to-r from-blue-500 to-purple-500 text-white py-3 rounded-xl font-bold hover:from-blue-600 hover:to-purple-600 transition-all duration-300 shadow-lg hover:shadow-xl"
               >
                 Save / Confirm Plan
               </button>
@@ -570,31 +601,31 @@ const CustomTripPlanner = () => {
 
             {/* Suggested Itinerary */}
             {selectedDestinations.length > 0 && startDate && (
-              <div className="bg-white rounded-2xl shadow-lg p-6">
-                <h2 className="text-xl font-bold text-gray-800 mb-4">Suggested Itinerary</h2>
+              <div className="bg-gray-800 rounded-2xl shadow-lg p-6">
+                <h2 className="text-xl font-bold text-gray-100 mb-4">Suggested Itinerary</h2>
                 
                 <div className="space-y-4">
                   {itinerary.map((day) => (
-                    <div key={day.day} className="border-l-4 border-blue-500 pl-4 py-2 bg-gray-50 rounded-r-lg">
+                    <div key={day.day} className="border-l-4 border-blue-400 pl-4 py-2 bg--700 rounded-r-lg">
                       <div className="flex justify-between items-center mb-2">
-                        <h3 className="font-bold text-gray-800">Day {day.day}</h3>
-                        <span className="text-xs text-gray-500">{formatDateShort(day.date)}</span>
+                        <h3 className="font-bold text-gray-100">Day {day.day}</h3>
+                        <span className="text-xs text-white-500">{formatDateShort(day.date)}</span>
                       </div>
                       {day.destinations.length > 0 ? (
                         <>
                           {day.destinations.map((dest, idx) => {
                             const hotel = destinationHotels[dest.id];
                             return (
-                              <div key={idx} className="text-sm text-gray-600 mb-2 pl-2">
+                              <div key={idx} className="text-sm text-white-600 mb-2 pl-2">
                                 <div className="flex items-start gap-2">
-                                  <MapPin size={14} className="text-blue-600 mt-0.5 flex-shrink-0" />
+                                  <MapPin size={14} className="text-blue-400 mt-0.5 flex-shrink-0" />
                                   <div className="flex-1">
-                                    <span className="font-semibold text-blue-600">{dest.name}</span>
-                                    <span className="text-gray-500"> — {dest.avgTime} • Rs {dest.cost.toLocaleString()}</span>
+                                    <span className="font-semibold text-blue-400">{dest.name}</span>
+                                    <span className="text-white-500"> — {dest.avgTime} • Rs {dest.cost.toLocaleString()}</span>
                                     {hotel && (
                                       <div className="flex items-center gap-1 mt-1">
-                                        <Hotel size={12} className="text-gray-500" />
-                                        <span className="text-xs text-gray-600">
+                                        <Hotel size={12} className="text-white-500" />
+                                        <span className="text-xs text-white-600">
                                           {hotel.name} ({hotel.stars}★) - Rs {hotel.price.toLocaleString()}/night
                                         </span>
                                       </div>
@@ -609,15 +640,15 @@ const CustomTripPlanner = () => {
                           </div>
                         </>
                       ) : (
-                        <p className="text-sm text-gray-400 italic">No destinations assigned</p>
+                        <p className="text-sm text-gray-600 italic">No destinations assigned</p>
                       )}
                     </div>
                   ))}
                 </div>
                 
                 {itinerary.length > 0 && (
-                  <div className="mt-4 p-3 bg-blue-50 rounded-lg">
-                    <p className="text-sm text-gray-700">
+                  <div className="mt-4 p-3 bg-blue-900/20 rounded-lg">
+                    <p className="text-sm text-gray-300">
                       <span className="font-semibold">Trip automatically adjusted to {itinerary.length} days</span> based on destination time requirements (24h per day)
                     </p>
                   </div>
@@ -626,8 +657,8 @@ const CustomTripPlanner = () => {
             )}
 
             {/* Quick Preview */}
-            <div className="bg-gradient-to-br from-blue-100 to-purple-100 rounded-2xl shadow-lg p-6">
-              <h2 className="text-xl font-bold text-gray-800 mb-4">Quick Preview</h2>
+            <div className="bg-gray-700 rounded-2xl shadow-lg p-6">
+              <h2 className="text-xl font-bold text-gray-100 mb-4">Quick Preview</h2>
               
               <div className="space-y-2 text-sm">
                 {startDate && (

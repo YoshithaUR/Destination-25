@@ -174,6 +174,7 @@ const DestinationPage = () => {
     "galle-fort": {
       id: 4,
       name: "Galle Fort",
+      image: "/5.jpeg",
       description:
         "UNESCO World Heritage site with well-preserved Dutch colonial architecture.",
       longDescription:
@@ -185,7 +186,7 @@ const DestinationPage = () => {
           content:
             "Galle Fort, originally built by the Portuguese in 1588 and later extensively fortified by the Dutch in the 17th century, stands as one of the best-preserved colonial-era fortresses in Asia. Its architecture reflects a unique fusion of European and South Asian influences, symbolizing centuries of maritime history.",
           image:
-            "https://images.unsplash.com/photo-1604328698692-f76ea9498d67?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+            "/5.jpeg",
         },
         {
           title: "Architectural Beauty",

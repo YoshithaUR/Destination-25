@@ -9,6 +9,7 @@ const CardsSection = () => {
       title: "Mountain Adventures",
       description: "Experience breathtaking hikes through misty mountains and discover hidden waterfalls.",
       image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80",
+       hoverImage: "/1.jpeg",  
       delay: 100
     },
     {
@@ -16,6 +17,7 @@ const CardsSection = () => {
       title: "Beach Getaways",
       description: "Relax on pristine beaches with crystal clear waters and golden sand shores.",
       image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80",
+      hoverImage: "/2.jpeg", 
       delay: 200
     },
     {
@@ -23,6 +25,7 @@ const CardsSection = () => {
       title: "Wildlife Safaris",
       description: "Embark on thrilling safaris to see elephants, leopards, and other wildlife in their natural habitats.",
       image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800&q=80",
+      hoverImage: "/3.jpeg", 
       delay: 300
     },
     {
@@ -30,6 +33,7 @@ const CardsSection = () => {
       title: "Cultural Tours",
       description: "Discover ancient temples, historical sites, and experience the rich culture of Sri Lanka.",
       image: "https://images.unsplash.com/photo-1548013146-72479768bada?w=800&q=80",
+      hoverImage: "/4.jpeg", 
       delay: 400
     }
   ];
@@ -46,13 +50,22 @@ const CardsSection = () => {
           opacity: hoveredImage ? 1.0 : 0
         }}
       ></div>
-      
+      {/* Background Video */}
+<video
+  className="absolute inset-0 w-full h-full object-cover"
+  src="/Sri Lanka  4K Cinematic Travel Film - Lalit Choudhary Films (1080p, h264).mp4"
+  autoPlay
+  loop
+  muted
+  playsInline
+></video>
+
       {/* Blue overlay to create dark blue effect */}
-      <div className="absolute inset-0 bg-blue-900/70"></div>
+      <div className="absolute inset-0 bg-gray-900/70"></div>
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         <h2 className="text-4xl font-bold text-center mb-4 text-white">
-          WHY CHOOSE <span className="text-red-900">Ceylon Destination</span>?
+          WHY CHOOSE <span className="text-white-900">Ceylon Destination</span>?
         </h2>
         <p className="text-gray-400 text-center mb-16 max-w-2xl mx-auto">
           We offer unforgettable experiences with our expertly crafted adventure packages.
@@ -88,22 +101,37 @@ const CardsSection = () => {
                 <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 translate-x-full group-hover:translate-x-[-200%] transition-transform duration-1000"></div>
               </div>
               
+              {/* Background Image Fade-in After Hover */}
+<div
+  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+  style={{
+    backgroundImage: `url(${card.hoverImage})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+  }}
+></div>
+
+
               {/* Content Container */}
-              <div className="relative z-10 h-full flex flex-col justify-end p-6">
-                {/* Title with Slide-up Animation */}
-                <h3 className="text-xl font-bold text-white mb-2 transform transition-all duration-500 group-hover:translate-y-[-8px]">
-                  {card.title}
-                </h3>
+<div className="relative z-10 h-full flex flex-col justify-end p-6">
+  <h3 className="text-xl font-bold text-white mb-2 transform transition-all duration-500 group-hover:translate-y-[-8px]">
+    {card.title}
+  </h3>
+  <p className="text-gray-300 text-sm opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-32 transition-all duration-500 group-hover:mb-4">
+    {card.description}
+  </p>
+
                 
                 {/* Description with Fade-in Effect */}
                 <p className="text-gray-300 text-sm opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-32 transition-all duration-500 group-hover:mb-4">
                   {card.description}
                 </p>
+
+               
+
                 
                 {/* Call-to-Action Button - Appears on Hover */}
-                <button className="mt-2 px-4 py-2 bg-white text-black font-semibold rounded-lg opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 hover:bg-red-900">
-                  Explore Now →
-                </button>
+                
               </div>
               
               {/* Corner Accent - Decorative Element */}

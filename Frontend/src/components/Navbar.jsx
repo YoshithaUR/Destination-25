@@ -91,15 +91,15 @@ const Navbar = () => {
         </div>
 
         {/* Right - Contact Info */}
-        <div className="contact-info">
-          <span>📞 +94763624680</span>
-          <span>✉️ info@ceylondestinations.com </span>
-        </div>
+<div className="contact-info">
+  <span>📞 +94763624680</span>
+  <span>✉️ ceylondestinations@gmail.com</span>
+</div>
       </div>
 
       {/* 🔹 Main Navbar */}
       <nav
-        className={`fixed top-[20px] left-0 w-full flex justify-between items-center px-10 py-6 z-40 transition-all duration-500 ${
+        className={`fixed top-[20px] left-0 w-full h-[80px] flex justify-between items-center px-10 py-6 z-40 transition-all duration-500 ${
           show
             ? "bg-black/70 backdrop-blur-md shadow-lg"
             : "bg-transparent"

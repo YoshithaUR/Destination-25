@@ -102,7 +102,7 @@ const Contact = () => {
           data-aos="fade-left"
           data-aos-delay="200"
         >
-          <h3 className="text-2xl font-semibold mb-6 text-red-800">
+          <h3 className="text-2xl font-semibold mb-6 text-white-800">
             Send Us a Message
           </h3>
 

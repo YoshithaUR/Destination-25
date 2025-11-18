@@ -335,14 +335,14 @@ const About = () => {
             className="text-5xl font-bold mb-6"
             data-aos="fade-down"
           >
-            ABOUT <span className="text-red-800">US</span>
+            ABOUT <span className="text-white-800">US</span>
           </h1>
           <p 
             className="text-lg text-gray-200 leading-relaxed max-w-3xl mx-auto"
             data-aos="fade-up"
             data-aos-delay="200"
           >
-            Welcome to <span className="text-red-800 font-semibold">Ceylon Infinite Destinations</span> Your ultimate adventure travel partner! We're dreamers,
+            Welcome to <span className="text-white-800 font-semibold">Ceylon Infinite Destinations</span> Your ultimate adventure travel partner! We're dreamers,
              wanderers, and storytellers united by one belief: the world is meant to be explored. 
             Join us as we turn ordinary trips into extraordinary tales
           </p>
@@ -363,17 +363,17 @@ const About = () => {
             data-aos-delay="400"
           >
             <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 shadow-lg hover:bg-red-900/20 transition">
-              <h3 className="text-xl font-semibold text-red-800 mb-2">🌄 Our Vision</h3>
+              <h3 className="text-xl font-semibold text-white-800 mb-2">🌄 Our Vision</h3>
               <p>To make Ceylon the world's ultimate adventure destination while protecting the paradise that makes it extraordinary</p>
             </div>
 
             <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 shadow-lg hover:bg-red-900/20 transition">
-              <h3 className="text-xl font-semibold text-red-800 mb-2">🧭 Our Mission</h3>
+              <h3 className="text-xl font-semibold text-white-800 mb-2">🧭 Our Mission</h3>
               <p>To guide you through Sri Lanka's hidden treasures—from cloud-kissed mountains to wild safaris—creating adventures that awaken your spirit.</p>
             </div>
 
             <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 shadow-lg hover:bg-red-900/20 transition">
-              <h3 className="text-xl font-semibold text-red-800 mb-2">🤝 Our Promise</h3>
+              <h3 className="text-xl font-semibold text-white-800 mb-2">🤝 Our Promise</h3>
               <p>Unforgettable journeys, eco-conscious travel, and authentic experiences that leave footprints only in your heart.</p>
             </div>
           </div>
@@ -401,7 +401,7 @@ const About = () => {
 >
   <div className="max-w-6xl mx-auto px-6">
     <h2 className="text-4xl font-bold text-center mb-4 text-white">
-      POPULAR <span className="text-red-900">DESTINATIONS</span>
+      POPULAR <span className="text-white-900">DESTINATIONS</span>
     </h2>
     <p className="text-gray-400 text-center mb-12 max-w-2xl mx-auto">
       Explore the most breathtaking locations across Sri Lanka
@@ -479,15 +479,7 @@ const About = () => {
               </p>
               
               {/* Explore Button - Appears on Hover */}
-              <button 
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleDestinationClick(destination);
-                }}
-                className="px-4 py-2 bg-white text-black rounded-lg opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 hover:bg-red-900 font-semibold"
-              >
-                Explore Now →
-              </button>
+              
             </div>
 
             {/* Corner Accent - Decorative Element */}
@@ -505,7 +497,7 @@ const About = () => {
 >
   <div className="max-w-6xl mx-auto px-6">
     <h2 className="text-4xl font-bold text-center mb-4 text-white">
-      OUR <span className="text-red-500">SERVICES</span>
+      OUR <span className="text-white-500">SERVICES</span>
     </h2>
     <p className="text-gray-400 text-center mb-12 max-w-2xl mx-auto">
       Discover our range of exceptional travel services designed for your perfect Sri Lankan adventure
@@ -584,15 +576,7 @@ const About = () => {
               </p>
               
               {/* Button */}
-              <button 
-                onClick={(e) => {
-                  e.stopPropagation();
-                  console.log(`Service selected: ${service.title}`);
-                }}
-                className="px-4 py-2 border-2 border-red-500 text-red-500 rounded-lg bg-white/10 hover:bg-red-500 hover:text-white transition-all duration-300 font-semibold"
-              >
-                Learn More
-              </button>
+              
             </div>
           </div>
         ))}
