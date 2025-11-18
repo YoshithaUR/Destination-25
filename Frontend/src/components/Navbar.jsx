@@ -96,7 +96,7 @@ const Navbar = () => {
         {/* Right - Contact Info */}
         <div className="contact-info">
           <span>📞 +94763624680</span>
-          <span>✉️ www.ceylondestinations.com
+          <span>✉️ ceylondestinations@gmail.com
 </span>
         </div>
       </div>

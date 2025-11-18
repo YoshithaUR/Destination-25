@@ -506,33 +506,41 @@ rounded-lg text-white hover:bg-white/20 transition-all backdrop-blur-md"
                           </h4>
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                             {dest.hotels.map(hotel => (
-                              <div
-                                key={hotel.id}
-                                onClick={() => selectHotelForDestination(dest.id, hotel)}
-                                className={`p-3 rounded-lg border-2 cursor-pointer transition-all ${
-                                  selectedHotel?.id === hotel.id
-                                    ? 'border-blue-400 bg-blue-900/20'
-                                    : 'border-gray-700 hover:border-blue-500'
-                                }`}
-                              >
-                                <div className="flex justify-between items-start">
-                                  <div className="flex-1">
-                                    <h5 className="font-semibold text-sm text-gray-100">{hotel.name}</h5>
-                                    <div className="flex gap-0.5 mt-1">
-                                      {[...Array(hotel.stars)].map((_, i) => (
-                                        <span key={i} className="text-yellow-400 text-xs">★</span>
-                                      ))}
-                                    </div>
-                                    <p className="text-blue-400 font-bold text-sm mt-1">
-                                      Rs {hotel.price.toLocaleString()}/night
-                                    </p>
-                                  </div>
-                                  {selectedHotel?.id === hotel.id && (
-                                    <Check className="text-blue-400" size={18} />
-                                  )}
-                                </div>
-                              </div>
-                            ))}
+  <div
+    key={hotel.id}
+    onClick={() => {
+      if (selectedHotel?.id === hotel.id) {
+        // Deselect if already selected
+        selectHotelForDestination(dest.id, null);
+      } else {
+        selectHotelForDestination(dest.id, hotel);
+      }
+    }}
+    className={`p-3 rounded-lg border-2 cursor-pointer transition-all ${
+      selectedHotel?.id === hotel.id
+        ? 'border-blue-400 bg-blue-900/20'
+        : 'border-gray-700 hover:border-blue-500'
+    }`}
+  >
+    <div className="flex justify-between items-start">
+      <div className="flex-1">
+        <h5 className="font-semibold text-sm text-gray-100">{hotel.name}</h5>
+        <div className="flex gap-0.5 mt-1">
+          {[...Array(hotel.stars)].map((_, i) => (
+            <span key={i} className="text-yellow-400 text-xs">★</span>
+          ))}
+        </div>
+        <p className="text-blue-400 font-bold text-sm mt-1">
+          Rs {hotel.price.toLocaleString()}/night
+        </p>
+      </div>
+      {selectedHotel?.id === hotel.id && (
+        <Check className="text-blue-400" size={18} />
+      )}
+    </div>
+  </div>
+))}
+
                           </div>
                         </div>
                       )}
@@ -553,8 +561,8 @@ rounded-lg text-white hover:bg-white/20 transition-all backdrop-blur-md"
                 onChange={(e) => setNotes(e.target.value)}
                 placeholder="Any special requests or preferences..."
                 rows="4"
-                className="w-full px-4 py-3 rounded-lg border-2 border-gray-700 focus:border-blue-400 focus:outline-none transition-colors resize-none"
-              />
+                className="w-full px-4 py-3 rounded-lg border-2 border-gray-700 focus:border-blue-400 focus:outline-none transition-colors resize-none text-black bg-white"
+ />
             </div>
           </div>
 
@@ -598,26 +606,26 @@ rounded-lg text-white hover:bg-white/20 transition-all backdrop-blur-md"
                 
                 <div className="space-y-4">
                   {itinerary.map((day) => (
-                    <div key={day.day} className="border-l-4 border-blue-400 pl-4 py-2 bg-gray-700 rounded-r-lg">
+                    <div key={day.day} className="border-l-4 border-blue-400 pl-4 py-2 bg--700 rounded-r-lg">
                       <div className="flex justify-between items-center mb-2">
                         <h3 className="font-bold text-gray-100">Day {day.day}</h3>
-                        <span className="text-xs text-gray-500">{formatDateShort(day.date)}</span>
+                        <span className="text-xs text-white-500">{formatDateShort(day.date)}</span>
                       </div>
                       {day.destinations.length > 0 ? (
                         <>
                           {day.destinations.map((dest, idx) => {
                             const hotel = destinationHotels[dest.id];
                             return (
-                              <div key={idx} className="text-sm text-gray-600 mb-2 pl-2">
+                              <div key={idx} className="text-sm text-white-600 mb-2 pl-2">
                                 <div className="flex items-start gap-2">
                                   <MapPin size={14} className="text-blue-400 mt-0.5 flex-shrink-0" />
                                   <div className="flex-1">
                                     <span className="font-semibold text-blue-400">{dest.name}</span>
-                                    <span className="text-gray-500"> — {dest.avgTime} • Rs {dest.cost.toLocaleString()}</span>
+                                    <span className="text-white-500"> — {dest.avgTime} • Rs {dest.cost.toLocaleString()}</span>
                                     {hotel && (
                                       <div className="flex items-center gap-1 mt-1">
-                                        <Hotel size={12} className="text-gray-500" />
-                                        <span className="text-xs text-gray-600">
+                                        <Hotel size={12} className="text-white-500" />
+                                        <span className="text-xs text-white-600">
                                           {hotel.name} ({hotel.stars}★) - Rs {hotel.price.toLocaleString()}/night
                                         </span>
                                       </div>
