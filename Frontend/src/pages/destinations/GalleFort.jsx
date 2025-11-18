@@ -5,6 +5,37 @@ import { useNavigate } from "react-router-dom";
 const GallFort= () => {
   const navigate = useNavigate();
   
+  <section 
+  className="relative h-[600px] flex items-center justify-center overflow-hidden"
+  data-aos="fade-in"
+>
+  <div 
+  className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+  style={{
+    backgroundImage: "url('public/4.jpeg')",
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    backgroundColor: '#8792a8ff'
+  }}
+/>
+
+  <div className="absolute inset-0 bg-black/70"></div>
+  <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-black/70"></div>
+  <div className="relative z-10 text-center px-6 max-w-4xl">
+    <h1 className="text-5xl md:text-7xl font-bold mb-6" data-aos="fade-down">
+      {destination.name}
+    </h1>
+    <p 
+      className="text-2xl text-gray-300 max-w-3xl mx-auto mb-8"
+      data-aos="fade-up"
+      data-aos-delay="200"
+    >
+      {destination.description}
+    </p>
+  </div>
+</section>
+
   // Destination details
   const destination = {
     id: 4,
@@ -20,7 +51,7 @@ const GallFort= () => {
           content:
             "Galle Fort, originally built by the Portuguese in 1588 and later extensively fortified by the Dutch in the 17th century, stands as one of the best-preserved colonial-era fortresses in Asia. Its architecture reflects a unique fusion of European and South Asian influences, symbolizing centuries of maritime history.",
           image:
-            "https://images.unsplash.com/photo-1562771379-eafdca7a02d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+            "/5.jpeg",
         },
         {
           title: "Architectural Beauty",
@@ -84,7 +115,7 @@ const GallFort= () => {
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
-            backgroundColor: '#1a202c'
+            backgroundColor: '#8792a8ff'
           }}
         />
         <div className="absolute inset-0 bg-black/70"></div>

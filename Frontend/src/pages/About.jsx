@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-
+import ReadMoreAbout from "./ReadMoreAbout.jsx";
 const About = () => {
  
   const allDestinations = [
@@ -34,7 +34,7 @@ const About = () => {
       id: 4,
       name: "Galle Fort",
       description: "UNESCO World Heritage site with well-preserved Dutch colonial architecture.",
-      image: "https://i.pinimg.com/736x/42/6a/7c/426a7c600b8958994d16a273773a43b1.jpg",
+      image: "/5.jpeg",
       rating: 4.6,
       link: "/destinations/galle-fort"
     },
@@ -359,14 +359,15 @@ const About = () => {
           </div>
 
           <Link to="/about-more">
-            <button 
-              className="mt-10 bg-yellow-400 text-black px-8 py-3 rounded-full font-semibold hover:bg-yellow-500 transition"
-              data-aos="zoom-in"
-              data-aos-delay="500"
-            >
-              Read More
-            </button>
-          </Link>
+  <button 
+    className="mt-10 bg-yellow-400 text-black px-8 py-3 rounded-full font-semibold hover:bg-yellow-500 transition"
+    data-aos="zoom-in"
+    data-aos-delay="500"
+  >
+    Read More
+  </button>
+</Link>
+
         </div>
       </section>
 
@@ -493,10 +494,10 @@ const About = () => {
                   <div className="p-6">
                     <h3 className="text-xl font-bold text-white mb-3">{service.title}</h3>
                     <p className="text-gray-300 text-sm mb-4">{service.description}</p>
-                 
+                 <Link to="/about-more">
                     <button className="w-full py-2 border-2 border-yellow-500 text-yellow-500 rounded-lg hover:bg-yellow-500 hover:text-black transition">
                       Read More
-                    </button>
+                    </button></Link>
                     
                   </div>
                 </div>
