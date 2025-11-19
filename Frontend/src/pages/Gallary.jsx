@@ -290,7 +290,7 @@ const Gallery = () => {
       {/* ===== VIDEOS SECTION ===== */}
       <div className="relative flex flex-col items-center justify-center min-h-screen overflow-hidden">
         <h1
-          className="text-5xl md:text-6xl font-bold text-red-800 mb-10 tracking-wider"
+          className="text-5xl md:text-6xl font-bold text-red-800 mb-10 tracking-wider mt-28 sm:mt-20"
           data-aos="fade-down"
         >
           TRAVEL
