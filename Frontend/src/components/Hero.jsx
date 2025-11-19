@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const slides = [
   {
     id: 1,
-    img: "Ravana Falls In Ella, Sri Lanka - Complete Guide (2025).jpeg",
+    img: "ella.jpeg",
     title: "Ella(Hill Country)",
     subtitle: "Where Mist Meets Mountains",
     description:
@@ -29,7 +29,7 @@ const slides = [
   },
   {
     id: 4,
-    img: "YALA NATIONAL PARK 10 Places Not to Miss in….jpeg",
+    img: "yala.jpeg",
     title: "Yala National Park(Wildlife Adventures)",
     subtitle: "nto the wild heart of Sri Lanka",
     description:

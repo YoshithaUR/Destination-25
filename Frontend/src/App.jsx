@@ -5,6 +5,7 @@ import Hero from "./components/Hero.jsx";
 import About from "./pages/About.jsx";
 import Contact from "./pages/Contact.jsx";
 import CardsSection from "./components/CardsSection.jsx";
+import GoogleReviews from "./components/GoogleReviews.jsx";
 import DestinationPage from "./pages/destinations/DestinationPage.jsx";
 import Footer from "./components/Footer.jsx";
 import Packages from "./pages/Packages.jsx";
@@ -55,6 +56,7 @@ const App = () => {
                     <CardsSection />
                     <About />
                     <Contact />
+                    <GoogleReviews />
                   </>
                 } />
                 <Route path="/packages" element={<Packages />} />
