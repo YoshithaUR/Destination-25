@@ -44,6 +44,7 @@ const Contact = () => {
           >
             Get In Touch !
           </h2>
+          
           <p 
             className="text-gray-300"
             data-aos="fade-up"
@@ -64,7 +65,7 @@ const Contact = () => {
               <Mail className="w-8 h-8 text-red-800" />
               <div>
                 <h4 className="font-semibold">Email Us</h4>
-                <p className="text-gray-300">nilu@smilelankatours.com</p>
+                <p className="text-gray-300">info@ceylondestinations.com</p>
               </div>
             </div>
 
@@ -89,7 +90,7 @@ const Contact = () => {
               <div>
                 <h4 className="font-semibold">Visit Us</h4>
                 <p className="text-gray-300">
-                  28, Kavida Place Colombo 6 Colombo, Colombo 00600 Sri Lanka
+                  141, Lionhead Trail, Scarborough, Ontario, Canada.
                 </p>
               </div>
             </div>
@@ -148,10 +149,18 @@ const Contact = () => {
               Send Message
             </button>
           </form>
+          
         </div>
       </div>
+
+     
+
     </section>
+    
   );
+ 
+    
+      
 };
 
 export default Contact;

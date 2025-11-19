@@ -4,6 +4,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const About = () => {
+ const [hoveredImage, setHoveredImage] = React.useState(null);
  
   const allDestinations = [
     {
@@ -11,6 +12,7 @@ const About = () => {
       name: "Sigiriya Rock Fortress",
       description: "Ancient rock fortress and palace ruin situated in the central Matale District.",
       image: "https://i.pinimg.com/736x/20/15/e9/2015e974ef15ba77ca9206d4166f764b.jpg",
+      hoverImage: "/11.jpeg", 
       rating: 4.8,
       link: "/destinations/sigiriya-rock-fortress"
     },
@@ -19,6 +21,7 @@ const About = () => {
       name: "Ella Rock",
       description: "Stunning hiking destination with panoramic views of the surrounding hills.",
       image: "https://i.pinimg.com/736x/21/5f/7a/215f7a6ca135ecafde0d31592a6c457d.jpg",
+      hoverImage: "/ella.jpeg", 
       rating: 4.9,
       link: "/destinations/ella-rock"
     },
@@ -27,6 +30,7 @@ const About = () => {
       name: "Yala National Park",
       description: "Famous wildlife reserve known for its leopard population and diverse fauna.",
       image: "https://i.pinimg.com/736x/29/a7/70/29a77078076cab3beb6bfccc073a0acc.jpg",
+      hoverImage: "/yala.jpeg", 
       rating: 4.7,
       link: "/destinations/yala-national-park"
     },
@@ -35,6 +39,7 @@ const About = () => {
       name: "Galle Fort",
       description: "UNESCO World Heritage site with well-preserved Dutch colonial architecture.",
       image: "https://i.pinimg.com/736x/42/6a/7c/426a7c600b8958994d16a273773a43b1.jpg",
+      hoverImage: "/5.jpeg", 
       rating: 4.6,
       link: "/destinations/galle-fort"
     },
@@ -43,6 +48,7 @@ const About = () => {
       name: "Adam's Peak",
       description: "Sacred mountain with a pilgrimage site at its summit, offering stunning sunrise views.",
       image: "https://i.pinimg.com/736x/4f/ca/f7/4fcaf7f3fa7753f8d381557712fe023c.jpg",
+      hoverImage: "/adam.jpeg", 
       rating: 4.5,
       link: "/destinations/adams-peak"
     },
@@ -51,6 +57,7 @@ const About = () => {
       name: "Mirissa Beach",
       description: "Popular beach destination known for whale watching and golden sand shores.",
       image: "https://i.pinimg.com/736x/86/1d/95/861d9595e4ca7d5b4cdb6e823c016f95.jpg",
+      hoverImage: "/2.jpeg", 
       rating: 4.7,
       link: "/destinations/mirissa-beach"
     },
@@ -59,6 +66,7 @@ const About = () => {
       name: "Kandy Temple",
       description: "Sacred Buddhist temple housing the Tooth Relic of the Buddha in the royal palace.",
       image: "https://i.pinimg.com/736x/dc/fc/9b/dcfc9bfc1fe8ad99432501bd20533bc7.jpg",
+      hoverImage: "/kandyy.jpeg", 
       rating: 4.8,
       link: "/destinations/kandy-temple"
     },
@@ -67,6 +75,7 @@ const About = () => {
       name: "Nuwara Eliya",
       description: "Picturesque hill country town known as 'Little England' for its colonial architecture.",
       image: "https://i.pinimg.com/1200x/71/2d/f7/712df76d0a1b7710ee416b9dcb00eaa1.jpg",
+      hoverImage: "/eliya.jpeg", 
       rating: 4.4,
       link: "/destinations/nuwara-eliya"
     },
@@ -75,6 +84,7 @@ const About = () => {
       name: "Dambulla Cave Temple",
       description: "Ancient cave temple complex with over 150 Buddha statues and stunning murals.",
       image: "https://i.pinimg.com/736x/29/87/ab/2987ab4ecc6d6fcde9063d882b44ea1f.jpg",
+      hoverImage: "/dam.jpeg", 
       rating: 4.6,
       link: "/destinations/dambulla-cave-temple"
     },
@@ -83,6 +93,7 @@ const About = () => {
       name: "Unawatuna Beach",
       description: "Beautiful crescent-shaped beach with coral reefs, perfect for swimming and snorkeling.",
       image: "https://i.pinimg.com/1200x/69/9b/f7/699bf70d68f5a93524346bb382da73e9.jpg",
+      hoverImage: "/Unawatuna.jpeg", 
       rating: 4.5,
       link: "/destinations/unawatuna-beach"
     },
@@ -91,6 +102,7 @@ const About = () => {
       name: "Horton Plains",
       description: "High-altitude plateau with diverse wildlife, endemic plants, and the famous World's End.",
       image: "https://i.pinimg.com/736x/28/de/9f/28de9f2b3257e65f9eaf62d42597606b.jpg",
+      hoverImage: "/hortan.jpeg", 
       rating: 4.7,
       link: "/destinations/horton-plains"
     },
@@ -99,6 +111,7 @@ const About = () => {
       name: "Anuradhapura",
       description: "Ancient city with well-preserved ruins of the first Sri Lankan capital and sacred Bodhi tree.",
       image: "https://i.pinimg.com/736x/bb/1c/d6/bb1cd672c9e59700a2ab78b6037bd0de.jpg",
+      hoverImage: "/anu.jpeg", 
       rating: 4.6,
       link: "/destinations/anuradhapura"
     }
@@ -436,19 +449,30 @@ const About = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-12">
         {visibleDestinations.map((destination, index) => (
           <div
-            key={destination.id}
-            className="group relative h-96 rounded-2xl overflow-hidden shadow-2xl cursor-pointer transform transition-all duration-500 hover:-translate-y-3 hover:shadow-red-900/50"
-            onClick={() => handleDestinationClick(destination)}
-            data-aos="fade-up"
-            data-aos-delay={index * 50}
-          >
-            {/* Background Image with Zoom Effect and Rotation */}
-            <div 
-              className="absolute inset-0 bg-cover bg-center transition-all duration-700 group-hover:scale-125 group-hover:rotate-2 group-hover:opacity-30"
-              style={{ 
-                backgroundImage: `url(${destination.image})`,
-              }}
-            ></div>
+  key={destination.id}
+  className="group relative h-96 rounded-2xl overflow-hidden shadow-2xl cursor-pointer transform transition-all duration-500 hover:-translate-y-3 hover:shadow-red-900/50"
+  onClick={() => handleDestinationClick(destination)}
+  data-aos="fade-up"
+  data-aos-delay={index * 50}
+>
+  {/* Main Background */}
+  <div 
+    className="absolute inset-0 bg-cover bg-center transition-all duration-700 group-hover:scale-125 group-hover:rotate-2 group-hover:opacity-30"
+    style={{ 
+      backgroundImage: `url(${destination.image})`,
+    }}
+  ></div>
+  {/* Hover Image AFTER EFFECTS */}
+  <div
+    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-300"
+    style={{
+      backgroundImage: `url(${destination.hoverImage})`,
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      zIndex: 1
+    }}
+  ></div>
+            
             
             {/* Gradient Overlay with Blue on Hover */}
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent group-hover:bg-blue-900 transition-all duration-500"></div>
@@ -460,11 +484,14 @@ const About = () => {
             <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
               <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 translate-x-full group-hover:translate-x-[-200%] transition-transform duration-1000"></div>
             </div>
+            
 
             {/* Rating Badge */}
             <div className="absolute top-4 right-4 bg-white text-black px-3 py-1 rounded-full text-sm font-bold z-10 transform transition-all duration-300 group-hover:scale-110">
               ★ {destination.rating}
             </div>
+
+            
             
             {/* Content Container */}
             <div className="relative z-10 h-full flex flex-col justify-end p-6">
