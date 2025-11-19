@@ -21,7 +21,24 @@ const Footer = () => {
             data-aos-delay="100"
             data-aos-once="true"
           >
-            <h3 className="text-2xl font-bold mb-4 text-red-800">Ceylon Infinite Destinations</h3>
+             <div className="logo-section flex items-center gap-1 mb-4">
+  {/* Circle logo container */}
+  <div
+    className="rounded-full border-4 h-18 w-20 flex items-center justify-center"
+    style={{ borderColor: '#82233e' }}
+  >
+    <img
+      src="/Untitled design (2).png"
+      alt="Ceylon Destinations Logo"
+      className="rounded-full h-17 w-17 object-cover"
+    />
+  </div>
+  <h3 className="text-2xl font-bold text-red-800 text-left  ">
+  Ceylon Infinite Destinations
+</h3>
+
+</div>
+
             <p className="text-gray-300 mb-4">
               Your ultimate adventure travel partner—unlocking Ceylon's wildest trails, hidden wonders, and infinite possibilities
             </p>
