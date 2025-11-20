@@ -84,21 +84,20 @@ const Packages = () => {
 
   return (
     <section className="relative min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white py-20 px-6">
+      {/* Back Button on Top Left */}
+      <button
+        onClick={() => navigate(-1)}
+        className="absolute top-22 left-2 md:left-12 px-4 py-2 text-sm font-semibold bg-white/10 border border-white/20 
+rounded-lg text-white hover:bg-white/20 transition-all backdrop-blur-md z-10"
+      >
+        ← Back
+      </button>
       
       <div className="max-w-6xl mx-auto">
-         {/* Back Button on Left */}
- 
         <h1 className="text-4xl md:text-5xl font-bold text-center mb-6  pt-15" data-aos="fade-down">
           Our <span className="text-red-500 ">Adventure</span> Packages
         </h1>
-         <button
-    onClick={() => navigate(-1)}
-   className="absolute left-12 px-4 py-2 text-sm font-semibold bg-white/10 border border-white/20 
-rounded-lg text-white hover:bg-white/20 transition-all backdrop-blur-md"
 
-  >
-    ← Back
-  </button>
         <p className="text-gray-300 text-center max-w-2xl mx-auto mb-16" data-aos="fade-up" data-aos-delay="100">
           Discover our carefully crafted adventure packages designed to give you the ultimate Sri Lankan experience.
         </p>

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./css/gallery.css";
 import axios from "axios";
 import videos from "../assest/Video/video.js";
@@ -12,6 +13,7 @@ const places = [
 ];
 
 const Gallery = () => {
+  const navigate = useNavigate();
   const [images, setImages] = useState([]);
   const [uploading, setUploading] = useState(false);
   const [showAuthModal, setShowAuthModal] = useState(false);
@@ -286,6 +288,13 @@ const Gallery = () => {
           </div>
         </div>
       )}
+      <button
+        onClick={() => navigate(-1)}
+        className="absolute top-40 left-2 md:left-12 px-4 py-2 text-sm font-semibold bg-white/10 border border-white/20 
+rounded-lg text-white hover:bg-white/20 transition-all backdrop-blur-md z-10"
+      >
+        ← Back
+      </button>
 
       {/* ===== VIDEOS SECTION ===== */}
       <div className="relative flex flex-col items-center justify-center min-h-screen overflow-hidden">

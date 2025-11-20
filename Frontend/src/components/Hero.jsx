@@ -31,7 +31,7 @@ const slides = [
     id: 4,
     img: "yala.jpeg",
     title: "Yala National Park(Wildlife Adventures)",
-    subtitle: "nto the wild heart of Sri Lanka",
+    subtitle: "Into the wild heart of Sri Lanka",
     description:
       "Experience thrilling safaris in Sri Lanka’s most famous national park, where elephants, leopards, and exotic birds roam free in their natural habitat.",
   },
@@ -58,26 +58,27 @@ const Hero = () => {
   const [currentBg, setCurrentBg] = useState(0);
   const [direction, setDirection] = useState(1);
 
-  // Next & previous slide handlers
   const nextSlide = useCallback(() => {
     setDirection(1);
     setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
-    setCurrentBg((prev) => (prev === backgroundImages.length - 1 ? 0 : prev + 1));
+    setCurrentBg((prev) =>
+      prev === backgroundImages.length - 1 ? 0 : prev + 1
+    );
   }, []);
 
   const prevSlide = useCallback(() => {
     setDirection(-1);
     setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
-    setCurrentBg((prev) => (prev === 0 ? backgroundImages.length - 1 : prev - 1));
+    setCurrentBg((prev) =>
+      prev === 0 ? backgroundImages.length - 1 : prev - 1
+    );
   }, []);
 
-  // Auto-change slide every 5s
   useEffect(() => {
     const slideInterval = setInterval(nextSlide, 5000);
     return () => clearInterval(slideInterval);
   }, [nextSlide]);
 
-  // Motion variants
   const slideVariants = {
     enter: (direction) => ({
       x: direction > 0 ? 300 : -300,
@@ -116,11 +117,9 @@ const Hero = () => {
   };
 
   return (
-    <section
-      id="home"
-      className="relative h-screen w-full flex items-center justify-start overflow-hidden"
-    >
-      {/* Background slide animation */}
+    <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
+      
+      {/* Background Animation */}
       <AnimatePresence mode="wait" custom={direction}>
         <motion.img
           key={backgroundImages[currentBg]}
@@ -135,10 +134,9 @@ const Hero = () => {
         />
       </AnimatePresence>
 
-      {/* Overlay */}
       <div className="absolute inset-0 bg-black/60"></div>
 
-      {/* Dynamic Text Content */}
+      {/* Slide Text */}
       <AnimatePresence mode="wait" custom={direction}>
         <motion.div
           key={slides[currentSlide].id}
@@ -146,66 +144,69 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -40 }}
           transition={{ duration: 0.8 }}
-          className="relative z-10 max-w-2xl ml-16"
+          className="relative z-10 max-w-xl md:max-w-2xl px-4 text-center md:text-left md:ml-16"
         >
-          <p className="uppercase text-sm tracking-widest text-gray-300">
+          <p className="uppercase text-xs md:text-sm tracking-widest text-gray-300">
             {slides[currentSlide].subtitle}
           </p>
-          <h1 className="text-5xl font-bold mt-3 leading-tight text-white">
+
+          <h1 className="text-3xl md:text-5xl font-bold mt-3 leading-tight text-white">
             {slides[currentSlide].title}
           </h1>
-          <p className="text-gray-300 mt-4 text-sm">
+
+          <p className="text-gray-300 mt-4 text-xs md:text-sm md:max-w-lg">
             {slides[currentSlide].description}
           </p>
+
           <motion.button
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
-            className="mt-6 bg-white text-black px-6 py-3 rounded-full font-semibold hover:bg-red-900 transition"
+            className="mt-6 bg-white text-black px-5 py-2 md:px-6 md:py-3 rounded-full font-semibold hover:bg-red-900 transition"
           >
             EXPLORE MORE
           </motion.button>
         </motion.div>
       </AnimatePresence>
 
-      {/* Slides Section */}
-      <div className="absolute bottom-16 right-10 flex items-center space-x-6 z-20">
+      {/* Slide Thumbnails & Arrows */}
+      <div className="absolute bottom-6 md:bottom-16 left-0 right-0 flex items-center justify-center md:justify-end px-4 md:px-10 space-x-4 md:space-x-6 z-20">
+        
         <motion.button
           whileHover={{ scale: 1.1 }}
           onClick={prevSlide}
-          className="p-3 bg-white/20 rounded-full hover:bg-red-900 transition-colors duration-300"
+          className="p-2 md:p-3 bg-white/20 rounded-full hover:bg-red-900 transition"
         >
-          <ChevronLeft size={24} />
+          <ChevronLeft size={22} />
         </motion.button>
 
-        <div className="flex space-x-6">
-          <AnimatePresence mode="popLayout" custom={direction}>
-            <motion.div
-              key={slides[currentSlide].id}
-              custom={direction}
-              variants={slideVariants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{ duration: 0.8 }}
-              className="relative overflow-hidden rounded-2xl w-64 h-[24rem] shadow-2xl"
-            >
-              <img
-                src={slides[currentSlide].img}
-                alt={`Slide ${slides[currentSlide].id}`}
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 border-2 border-red-800 rounded-2xl pointer-events-none" />
-            </motion.div>
-          </AnimatePresence>
-        </div>
+        <AnimatePresence mode="popLayout" custom={direction}>
+          <motion.div
+            key={slides[currentSlide].id}
+            custom={direction}
+            variants={slideVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{ duration: 0.8 }}
+            className="relative overflow-hidden rounded-xl w-40 h-56 md:w-64 md:h-[24rem] shadow-2xl"
+          >
+            <img
+              src={slides[currentSlide].img}
+              alt="Slide Preview"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 border-2 border-red-800 rounded-xl pointer-events-none"></div>
+          </motion.div>
+        </AnimatePresence>
 
         <motion.button
           whileHover={{ scale: 1.1 }}
           onClick={nextSlide}
-          className="p-3 bg-white/20 rounded-full hover:bg-red-900 transition-colors duration-300"
+          className="p-2 md:p-3 bg-white/20 rounded-full hover:bg-red-900 transition"
         >
-          <ChevronRight size={24} />
+          <ChevronRight size={22} />
         </motion.button>
+
       </div>
     </section>
   );
