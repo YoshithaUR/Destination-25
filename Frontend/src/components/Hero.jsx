@@ -136,77 +136,109 @@ const Hero = () => {
 
       <div className="absolute inset-0 bg-black/60"></div>
 
-      {/* Slide Text */}
-      <AnimatePresence mode="wait" custom={direction}>
-        <motion.div
-          key={slides[currentSlide].id}
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -40 }}
-          transition={{ duration: 0.8 }}
-          className="relative z-10 max-w-xl md:max-w-2xl px-4 text-center md:text-left md:ml-16"
-        >
-          <p className="uppercase text-xs md:text-sm tracking-widest text-gray-300">
-            {slides[currentSlide].subtitle}
-          </p>
+      {/* Slide Text + Preview: responsive two-column on md+, stacked on mobile */}
+      <div className="relative z-10 w-full max-w-6xl px-4 pt-16 md:pt-0">
+        <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
+          {/* Text column */}
+          <AnimatePresence mode="wait" custom={direction}>
+            <motion.div
+              key={slides[currentSlide].id}
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -40 }}
+              transition={{ duration: 0.8 }}
+              className="w-full md:w-1/2 text-center md:text-left"
+            >
+              <h1 className="text-3xl md:text-5xl font-bold mt-3 leading-tight text-white">
+                {slides[currentSlide].title}
+              </h1>
 
-          <h1 className="text-3xl md:text-5xl font-bold mt-3 leading-tight text-white">
-            {slides[currentSlide].title}
-          </h1>
+              <p className="uppercase text-xs md:text-sm tracking-widest text-gray-300 mt-2">
+                {slides[currentSlide].subtitle}
+              </p>
 
-          <p className="text-gray-300 mt-4 text-xs md:text-sm md:max-w-lg">
-            {slides[currentSlide].description}
-          </p>
+              <p className="text-gray-300 mt-4 text-xs md:text-sm md:max-w-lg">
+                {slides[currentSlide].description}
+              </p>
 
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                className="mt-6 bg-white text-black px-5 py-2 md:px-6 md:py-3 rounded-full font-semibold hover:bg-red-900 transition"
+              >
+                EXPLORE MORE
+              </motion.button>
+            </motion.div>
+          </AnimatePresence>
+
+          {/* Preview column: large on desktop */}
+          <div className="w-full md:w-1/2 flex justify-center md:justify-end">
+            <div className="hidden md:block relative">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                onClick={prevSlide}
+                className="absolute left-0 top-1/2 -translate-y-1/2 ml-2 p-3 bg-white/20 rounded-full hover:bg-red-900 transition z-50"
+              >
+                <ChevronLeft size={22} />
+              </motion.button>
+
+              <AnimatePresence mode="popLayout" custom={direction}>
+                <motion.div
+                  key={slides[currentSlide].id}
+                  custom={direction}
+                  variants={slideVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  transition={{ duration: 0.8 }}
+                  className="relative overflow-hidden rounded-xl w-64 h-[24rem] shadow-2xl"
+                >
+                  <img
+                    src={slides[currentSlide].img}
+                    alt="Slide Preview"
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 border-2 border-red-800 rounded-xl pointer-events-none"></div>
+                </motion.div>
+              </AnimatePresence>
+
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                onClick={nextSlide}
+                className="absolute right-0 top-1/2 -translate-y-1/2 mr-2 p-3 bg-white/20 rounded-full hover:bg-red-900 transition z-50"
+              >
+                <ChevronRight size={22} />
+              </motion.button>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile small preview + controls (stacked below text) */}
+        <div className="flex md:hidden w-full justify-center items-center gap-4 mt-2 z-0 px-4">
           <motion.button
             whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            className="mt-6 bg-white text-black px-5 py-2 md:px-6 md:py-3 rounded-full font-semibold hover:bg-red-900 transition"
+            onClick={prevSlide}
+            className="p-3 bg-white/20 rounded-full hover:bg-red-900 transition z-50"
           >
-            EXPLORE MORE
+            <ChevronLeft size={22} />
           </motion.button>
-        </motion.div>
-      </AnimatePresence>
 
-      {/* Slide Thumbnails & Arrows */}
-      <div className="absolute bottom-6 md:bottom-16 left-0 right-0 flex items-center justify-center md:justify-end px-4 md:px-10 space-x-4 md:space-x-6 z-20">
-        
-        <motion.button
-          whileHover={{ scale: 1.1 }}
-          onClick={prevSlide}
-          className="p-2 md:p-3 bg-white/20 rounded-full hover:bg-red-900 transition"
-        >
-          <ChevronLeft size={22} />
-        </motion.button>
-
-        <AnimatePresence mode="popLayout" custom={direction}>
-          <motion.div
-            key={slides[currentSlide].id}
-            custom={direction}
-            variants={slideVariants}
-            initial="enter"
-            animate="center"
-            exit="exit"
-            transition={{ duration: 0.8 }}
-            className="relative overflow-hidden rounded-xl w-40 h-56 md:w-64 md:h-[24rem] shadow-2xl"
-          >
+          <div className="w-32 h-44 rounded-xl overflow-hidden shadow-lg">
             <img
               src={slides[currentSlide].img}
               alt="Slide Preview"
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 border-2 border-red-800 rounded-xl pointer-events-none"></div>
-          </motion.div>
-        </AnimatePresence>
+          </div>
 
-        <motion.button
-          whileHover={{ scale: 1.1 }}
-          onClick={nextSlide}
-          className="p-2 md:p-3 bg-white/20 rounded-full hover:bg-red-900 transition"
-        >
-          <ChevronRight size={22} />
-        </motion.button>
-
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            onClick={nextSlide}
+            className="p-2 bg-white/10 rounded-full hover:bg-red-900 transition"
+          >
+            <ChevronRight size={18} />
+          </motion.button>
+        </div>
       </div>
     </section>
   );
