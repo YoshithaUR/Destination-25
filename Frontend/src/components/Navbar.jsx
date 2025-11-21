@@ -70,12 +70,13 @@ const Navbar = () => {
     <>
       
       {/* 🔹 Top Bar */}
-<div className="w-full bg-[#8A173B] text-white text-sm">
+<div className="w-full bg-[#8A173B] text-white text-sm hidden sm:block">
+
   <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between px-4 py-2">
 
     {/* LEFT — Social Media Icons */}
     <div className="flex items-center gap-4 mb-1 sm:mb-0 justify-center sm:justify-start">
-  {/* Facebook */}ㅤㅤㅤㅤㅤㅤㅤㅤ
+  {/* Facebook */}
   <a
     href="https://www.facebook.com/share/1XjEbgs2kd/?mibextid=qi2Omg"
     className="text-gray-300 hover:text-red-800 transition-colors"
@@ -123,7 +124,7 @@ const Navbar = () => {
         </svg>
         +94763624680
       </span>
-ㅤ
+
       <span className="flex items-center gap-1">
         <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
           <path d="M2.94 5.5A2 2 0 014.58 4h10.84a2 2 0 011.64.8L10 10.4 2.94 5.5zm14.12 1.76L10 12.6 2.94 7.26A2 2 0 002 9v6a2 2 0 002 2h12a2 2 0 002-2V9a2 2 0 00-.94-1.74z"/>
@@ -144,19 +145,24 @@ const Navbar = () => {
             : "bg-transparent"
         }`}
       >
-       <div className="logo-section flex items-center gap-2">
-  {/* Increased size to h-28 w-28 (112px by 112px) */}
-  <div className="rounded-full border-4 h-16 w-16 flex items-center justify-center"
-     style={{ borderColor: '#82233e' }}>
-  <img
-    src="/Untitled design (2).png"
-    alt="Ceylon Destinations Logo"
-    className="logo-img-full h-full w-full rounded-full object-cover"
-  />
+       <div className="flex items-center gap-3 md:gap-4">
+
+  <div
+    className="rounded-full border-4 h-14 w-14 md:h-16 md:w-16 flex items-center justify-center shrink-0"
+    style={{ borderColor: "#82233e" }}
+  >
+    <img
+      src="/Untitled design (2).png"
+      alt="Ceylon Destinations Logo"
+      className="logo-img-full h-full w-full rounded-full object-cover"
+    />
+  </div>
+
+  <h1 className="text-white font-bold text-lg md:text-xl tracking-wider whitespace-nowrap">
+    Ceylon Destinations
+  </h1>
 </div>
 
-  <h1 className="text-white font-bold text-xl tracking-wider">Ceylon Destinations</h1>
-</div>
 
 
 
