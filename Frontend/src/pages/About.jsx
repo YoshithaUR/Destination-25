@@ -172,8 +172,18 @@ const About = () => {
   };
 
   const [currentIndex, setCurrentIndex] = useState(getInitialIndex());
-  const [visibleDestinations, setVisibleDestinations] = useState(allDestinations.slice(getInitialIndex(), getInitialIndex() + 4));
+  // responsive visible count: 1 on small, 2 on md, 4 on lg+
+  const getVisibleCount = () => {
+    if (typeof window === 'undefined') return 4;
+    if (window.innerWidth < 768) return 1;
+    if (window.innerWidth < 1024) return 2;
+    return 4;
+  };
+
+  const [visibleCount, setVisibleCount] = useState(getVisibleCount());
+  const [visibleDestinations, setVisibleDestinations] = useState(allDestinations.slice(getInitialIndex(), getInitialIndex() + getVisibleCount()));
   const [servicesIndex, setServicesIndex] = useState(0); // For services carousel
+  const [visibleServices, setVisibleServices] = useState(services.slice(0, getVisibleCount()));
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [focusedService, setFocusedService] = useState(-1); // Track focused service card
   const navigate = useNavigate();
@@ -187,12 +197,41 @@ const About = () => {
   // Update visible destinations when index changes
   useEffect(() => {
     const newVisibleDestinations = [];
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < visibleCount; i++) {
       const index = (currentIndex + i) % allDestinations.length;
       newVisibleDestinations.push(allDestinations[index]);
     }
     setVisibleDestinations(newVisibleDestinations);
-  }, [currentIndex]);
+  }, [currentIndex, visibleCount]);
+
+  // Update visibleCount on resize
+  useEffect(() => {
+    const handleResize = () => {
+      const vc = getVisibleCount();
+      setVisibleCount(vc);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Ensure indices stay within bounds when visibleCount or data length changes
+  useEffect(() => {
+    setCurrentIndex((prev) => prev % allDestinations.length);
+  }, [visibleCount, allDestinations.length]);
+
+  useEffect(() => {
+    setServicesIndex((prev) => prev % services.length);
+  }, [visibleCount, services.length]);
+
+  // Update visible services when servicesIndex or visibleCount changes
+  useEffect(() => {
+    const newVisible = [];
+    for (let i = 0; i < visibleCount; i++) {
+      const idx = (servicesIndex + i) % services.length;
+      newVisible.push(services[idx]);
+    }
+    setVisibleServices(newVisible);
+  }, [servicesIndex, visibleCount, services]);
 
   // Handle keyboard navigation for service cards
   useEffect(() => {
@@ -268,23 +307,23 @@ const About = () => {
   }, [services]);
 
   const nextDestinations = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 3) % allDestinations.length);
+    setCurrentIndex((prevIndex) => (prevIndex + visibleCount) % allDestinations.length);
   };
 
   const prevDestinations = () => {
     setCurrentIndex((prevIndex) => 
-      prevIndex === 0 ? allDestinations.length - 3 : (prevIndex - 3 + allDestinations.length) % allDestinations.length
+      (prevIndex - visibleCount + allDestinations.length) % allDestinations.length
     );
   };
 
-  // Services carousel navigation
+  // Services carousel navigation (responsive step)
   const nextServices = () => {
-    setServicesIndex((prevIndex) => (prevIndex + 3) % services.length);
+    setServicesIndex((prevIndex) => (prevIndex + visibleCount) % services.length);
   };
 
   const prevServices = () => {
     setServicesIndex((prevIndex) => 
-      prevIndex === 0 ? services.length - 3 : (prevIndex - 3 + services.length) % services.length
+      (prevIndex - visibleCount + services.length) % services.length
     );
   };
 
@@ -554,8 +593,8 @@ const About = () => {
       </button>
 
       {/* Services Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-12">
-        {services.slice(servicesIndex, servicesIndex + 3).map((service, i) => (
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 px-12">
+        {visibleServices.map((service, i) => (
           <div
             key={service.id}
             className="group relative h-96 rounded-2xl overflow-hidden shadow-2xl cursor-pointer transform transition-all duration-500 hover:-translate-y-3 hover:shadow-red-500/50"
@@ -593,7 +632,7 @@ const About = () => {
  
               
               {/* Title with Slide-up Animation */}
-              <h3 className="text-xl font-bold text-white mb-2 transform transition-all duration-300 group-hover:translate-y-[-4px]">
+              <h3 className="text-xl font-bold text-white mb-2 transform transition-all duration-300 group-hover:translate-y-[-4px] lg:truncate">
                 {service.title}
               </h3>
               
