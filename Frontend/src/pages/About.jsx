@@ -186,6 +186,7 @@ const About = () => {
   const [visibleServices, setVisibleServices] = useState(services.slice(0, getVisibleCount()));
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [focusedService, setFocusedService] = useState(-1); // Track focused service card
+  const [aboutCardsIndex, setAboutCardsIndex] = useState(0); // For about cards carousel
   const navigate = useNavigate();
 
   // Handle destination click - save to localStorage
@@ -322,9 +323,18 @@ const About = () => {
   };
 
   const prevServices = () => {
-    setServicesIndex((prevIndex) => 
+    setServicesIndex((prevIndex) =>
       (prevIndex - visibleCount + services.length) % services.length
     );
+  };
+
+  // About cards carousel navigation for mobile
+  const nextAboutCard = () => {
+    setAboutCardsIndex((prevIndex) => (prevIndex + 1) % 3);
+  };
+
+  const prevAboutCard = () => {
+    setAboutCardsIndex((prevIndex) => (prevIndex - 1 + 3) % 3);
   };
 
   // Auto-move functionality
