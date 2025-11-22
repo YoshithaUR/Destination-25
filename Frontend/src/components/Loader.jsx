@@ -25,24 +25,18 @@ const Loader = ({ isLoading = true }) => {
           <div className="absolute inset-4 rounded-full border-4 border-transparent border-t-orange-500 animate-spin animation-delay-400"></div>
           
           {/* Center logo with pulse animation */}
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-red-900 to-orange-500 flex items-center justify-center animate-pulse">
-              <svg 
-                xmlns="http://www.w3.org/2000/svg" 
-                width="28" 
-                height="28" 
-                viewBox="0 0 24 24" 
-                fill="none" 
-                stroke="currentColor" 
-                strokeWidth="2" 
-                strokeLinecap="round" 
-                strokeLinejoin="round" 
-                className="text-white"
-              >
-                <path d="m8 3 4 8 5-5 5 15H2L8 3z"/>
-              </svg>
-            </div>
-          </div>
+         <div className="absolute inset-0 flex items-center justify-center">
+  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-red-900 to-orange-500 flex items-center justify-center animate-pulse overflow-hidden border-2"
+       style={{ borderColor: "#82233e" }}>
+    <img 
+      src="/Untitled design (2).png"
+      alt="Logo"
+      className="w-full h-full rounded-full object-cover"
+    />
+  </div>
+</div>
+
+
         </div>
         
         {/* Company name and loading text with fade-in animation */}
