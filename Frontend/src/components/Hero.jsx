@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -53,7 +54,8 @@ const backgroundImages = [
   "Visiting Sigiriya Rock Fortress in Sri Lanka.jpeg",
 ];
 
-const Hero = () => {
+  const Hero = () => {
+  const navigate = useNavigate();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [currentBg, setCurrentBg] = useState(0);
   const [direction, setDirection] = useState(1);
@@ -164,6 +166,7 @@ const Hero = () => {
               <motion.button
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={() => navigate('/ExploreSwipe')}
                 className="mt-6 bg-white text-black px-5 py-2 md:px-6 md:py-3 rounded-full font-semibold hover:bg-red-900 transition"
               >
                 EXPLORE MORE

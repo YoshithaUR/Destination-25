@@ -15,6 +15,7 @@ import Loader from "./components/Loader.jsx";
 import PackageTemplate from "./pages/packages/PackageTemplate.jsx";
 import ReadMoreAbout from "./pages/ReadMoreAbout.jsx";
 import CustomPackages from "./pages/CustomPackages.jsx";
+import ExploreSwipe from "./pages/ExploreSwipe.jsx";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -59,6 +60,7 @@ const App = () => {
                     <GoogleReviews />
                   </>
                 } />
+                <Route path="/ExploreSwipe" element={<ExploreSwipe />} />
                 <Route path="/packages" element={<Packages />} />
                 <Route path="/packages/:id" element={<PackageTemplate />} />
                 <Route path="/gallery" element={<Gallery />} />

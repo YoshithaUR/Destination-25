@@ -748,10 +748,7 @@ const DestinationPage = () => {
         </button>
       </div>
 
-      {/* Navbar */}
-      <div className="pt-20">
-        <Navbar />
-      </div>
+      
 
       {/* Hero Section */}
       <section
